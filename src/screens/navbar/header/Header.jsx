@@ -6,7 +6,7 @@ import "./header.css";
 
 export const Header = () => {
   return (
-    <div className='header-wrapper flex jc-center ai-center'>
+    <div className='header-wrapper flex jc-between ai-center'>
       <div className='input-field search-bar '>
         <input placeholder='Search products' required type='search' />
       </div>

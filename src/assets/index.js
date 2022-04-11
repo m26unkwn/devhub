@@ -9,3 +9,5 @@ export { default as Playlist } from "./PaperPlus.svg";
 export { default as WatchLater } from "./Bookmark.svg";
 export { default as Profile } from "./User.svg";
 export { default as LeftArrow } from "./LeftArrow.svg";
+export { default as ReactLogo } from "./ReactLogo.png";
+export { default as Javascript } from "./JavascriptPoster.png";

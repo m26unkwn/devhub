@@ -1,5 +1,13 @@
 /** @format */
 
 .category-wrapper {
-  margin-top: 2rem;
+  margin: 2rem 0;
+}
+
+.category-title {
+  margin-bottom: 2rem;
+}
+
+.category-card-wrapper {
+  gap: 4rem;
 }

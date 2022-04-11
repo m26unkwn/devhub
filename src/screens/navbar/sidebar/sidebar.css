@@ -5,6 +5,8 @@
   width: 15rem;
   height: 100vh;
   background-color: white;
+  position: fixed;
+  top: 0;
 }
 .sidebar-content {
   height: 100%;

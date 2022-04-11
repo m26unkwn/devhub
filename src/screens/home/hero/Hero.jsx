@@ -14,7 +14,7 @@ export const Hero = () => {
         </h2>
       </div>
       <div className=' hero-action flex'>
-        <button className='btn '>
+        <button className='btn'>
           Explore Now <img src={LeftArrow} alt='explore_icon' />
         </button>
       </div>
