@@ -1,0 +1,6 @@
+/** @format */
+
+.main-container {
+  grid-area: main;
+  margin: 2rem;
+}
