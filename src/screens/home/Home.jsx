@@ -7,9 +7,11 @@ import "./home.css";
 
 export const Home = () => {
   return (
-    <div className='main-container home-wrapper'>
-      <Hero />
-      <Category />
+    <div className='main-container'>
+      <div className='home-wrapper'>
+        <Hero />
+        <Category />
+      </div>
     </div>
   );
 };

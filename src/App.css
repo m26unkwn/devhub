@@ -14,10 +14,11 @@
 :root {
   /* colors */
   --secondary-bg-color: #ff99dc;
-  --bg-color: #f7f7f7;
-  --white-color: #ffff;
+  --bg-container-color: #f7f7f7;
+  --bg-color: #ffff;
   --bg-input-color: #f2f2f6;
   --bg-color-nav: #f2f2f6;
+  --text-secondary-color: #ffff;
   --heading-text-color: #333333;
   --bg-btn-signup-color: #ececec;
 }

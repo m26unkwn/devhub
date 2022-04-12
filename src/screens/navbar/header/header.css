@@ -2,11 +2,12 @@
 
 .header-wrapper {
   grid-area: header;
-  background-color: white;
+  background-color: var(--bg-color);
   height: 4rem;
   padding: 0 2rem;
   position: sticky;
   top: 0;
+  z-index: 2;
 }
 
 .search-bar {
@@ -35,12 +36,12 @@
   font-weight: 700;
   height: 2.5rem;
   text-decoration: none;
-  color: white;
+  color: var(--text-secondary-color);
 }
 
 .login-btn {
-  background-color: #ececec;
-  color: #333;
+  background-color: var(--bg-btn-signup-color);
+  color: var(--heading-text-color);
 }
 
 @media only screen and (max-width: 700px) {

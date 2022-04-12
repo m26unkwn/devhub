@@ -29,7 +29,7 @@ export const Sidebar = () => {
         <div className='sidebar-nav-content'>
           <div className='sidbar-nav-items'>
             <NavLink
-              to='/home'
+              to='/'
               className={({ isActive }) =>
                 isActive ? "sidebar-items nav-link-active " : "sidebar-items"
               }>

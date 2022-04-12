@@ -7,6 +7,7 @@
   background-color: white;
   position: fixed;
   top: 0;
+  z-index: 999;
 }
 .sidebar-content {
   height: 100%;
@@ -41,7 +42,6 @@
 }
 .sidebar-items:hover {
   background: var(--bg-color-link-hover);
-  color: black;
 }
 
 .nav-link-active {
@@ -61,7 +61,7 @@
 
     width: 5rem;
     height: 100vh;
-    background-color: white;
+    background-color: var(--bg-color);
   }
   .nav-title {
     display: none;

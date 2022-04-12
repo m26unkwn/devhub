@@ -2,5 +2,8 @@
 
 .main-container {
   grid-area: main;
+  background-color: var(--bg-container-color);
+}
+.home-wrapper {
   margin: 2rem;
 }

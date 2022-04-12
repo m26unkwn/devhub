@@ -12,7 +12,7 @@ export const CategoryCard = (props) => {
       <Link to={`/category/${link}`} className='category-link'>
         <img src={img} className='img-responsive' alt={`${categoryName}+img`} />
         <div className='category-action flex flex-end'>
-          <button className='btn'>{categoryName}</button>
+          <button className='btn'>Learn {categoryName}</button>
         </div>
       </Link>
     </div>

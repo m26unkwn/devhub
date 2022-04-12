@@ -6,7 +6,7 @@ import "./category.css";
 
 import { CategoryCard } from "../../../components";
 
-import { Javascript } from "../../../assets";
+import { Javascript, ReactLogo, CssLogo, HtmlLogo } from "../../../assets";
 
 export const Category = () => {
   return (
@@ -18,12 +18,12 @@ export const Category = () => {
         <div className='category-card-wrapper flex flex-gap flex-wrap'>
           <CategoryCard
             img={Javascript}
-            categoryName={"Javascript"}
-            link={"javascript"}
+            categoryName='Javascript'
+            link='javascript'
           />
-          <CategoryCard />
-          <CategoryCard />
-          <CategoryCard />
+          <CategoryCard img={ReactLogo} categoryName={"React"} link='react' />
+          <CategoryCard img={CssLogo} categoryName='Css' link='css' />
+          <CategoryCard img={HtmlLogo} categoryName='Html' link='html' />
         </div>
       </div>
     </div>
