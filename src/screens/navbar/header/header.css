@@ -1,0 +1,61 @@
+/** @format */
+
+.header-wrapper {
+  grid-area: header;
+  background-color: var(--bg-color);
+  height: 4rem;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.search-bar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.search-bar > input {
+  background-color: var(--bg-input-color);
+  border: 2px solid transparent;
+  padding: 8px 12px;
+  width: 100%;
+}
+
+.auth-action-wrapper {
+  margin-left: 1rem;
+  width: 14rem;
+}
+
+.login-btn,
+.signup-btn {
+  align-items: center;
+  display: flex;
+  font-weight: 700;
+  height: 2.5rem;
+  text-decoration: none;
+  color: var(--text-secondary-color);
+}
+
+.login-btn {
+  background-color: var(--bg-btn-signup-color);
+  color: var(--heading-text-color);
+}
+
+@media only screen and (max-width: 700px) {
+  .search-bar {
+    width: 100%;
+  }
+  .search-bar > input {
+    background-color: var(--bg-input-color);
+    border: 2px solid transparent;
+    padding: 8px 12px;
+    width: 100%;
+  }
+
+  .signup-btn {
+    display: none;
+  }
+}
