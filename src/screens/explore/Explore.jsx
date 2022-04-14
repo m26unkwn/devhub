@@ -7,34 +7,34 @@ import { VideoCard, Button } from "../../components";
 import { useVideos } from "../../context";
 import { videoFilter } from "../../utils";
 
+const buttonTitle = [
+  {
+    title: "All Videos",
+    param: "allvideos",
+  },
+  {
+    title: "Javascript",
+    param: "javascript",
+  },
+  {
+    title: "React",
+    param: "react",
+  },
+  {
+    title: "Html",
+    param: "html",
+  },
+  {
+    title: "Css",
+    param: "css",
+  },
+];
+
 export const Explore = () => {
   const {
     videoState: { videos, filters },
     videoDispatch,
   } = useVideos();
-
-  const buttonTitle = [
-    {
-      title: "All Videos",
-      param: "allvideos",
-    },
-    {
-      title: "Javascript",
-      param: "javascript",
-    },
-    {
-      title: "React",
-      param: "react",
-    },
-    {
-      title: "Html",
-      param: "html",
-    },
-    {
-      title: "Css",
-      param: "css",
-    },
-  ];
 
   const filteredVideos = videoFilter(videos, filters);
   console.log(filteredVideos);

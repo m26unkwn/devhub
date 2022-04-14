@@ -17,13 +17,15 @@ import {
   Profile,
 } from "./screens";
 
+let videoConfig = {
+  method: "get",
+  url: "/api/videos",
+  property: "videos",
+};
+
 function App() {
   const { videoDispatch } = useVideos();
-  let videoConfig = {
-    method: "get",
-    url: "/api/videos",
-    property: "videos",
-  };
+
   const [videos] = useAxios(videoConfig);
 
   useEffect(() => {
