@@ -1,7 +1,10 @@
 /** @format */
 
 import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 import "./App.css";
+import { useVideos } from "./context";
+import { useAxios } from "./hooks";
 
 import {
   Navbar,
@@ -15,6 +18,20 @@ import {
 } from "./screens";
 
 function App() {
+  const { videoDispatch } = useVideos();
+  let videoConfig = {
+    method: "get",
+    url: "/api/videos",
+    property: "videos",
+  };
+  const [videos] = useAxios(videoConfig);
+
+  useEffect(() => {
+    if (videos) {
+      videoDispatch({ type: "ADD_VIDEOS", videos: videos });
+    }
+  }, [videoDispatch, videos]);
+
   return (
     <div className='main-grid-container'>
       <Navbar />

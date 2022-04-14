@@ -1,0 +1,31 @@
+/** @format */
+
+.video-card {
+  width: 20rem;
+  height: auto;
+  background-color: var(--bg-color);
+}
+.video-card-content {
+  padding: 1rem;
+}
+.video-card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+.video-card-title > a {
+  text-decoration: none;
+  color: inherit;
+}
+.video-card-action {
+  margin-left: auto;
+}
+@media only screen and (max-width: 700px) {
+  .video-card {
+    width: 10rem;
+    height: auto;
+    background-color: var(--bg-color);
+  }
+}

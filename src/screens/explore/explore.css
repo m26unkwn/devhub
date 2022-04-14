@@ -1,0 +1,19 @@
+/** @format */
+
+.main-container {
+  grid-area: main;
+  background-color: var(--bg-container-color);
+}
+.explore-wrapper {
+  margin: 2rem;
+}
+
+.explore-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+}
+.explore-category {
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,24 @@
+/** @format */
+
+.category-btn {
+  all: unset;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+}
+
+.javascript {
+  background-image: linear-gradient(135deg, #fdeb71 10%, #f8d800 100%);
+  color: rgb(61, 61, 61);
+}
+.react {
+  background-image: linear-gradient(135deg, #2afadf 10%, #4c83ff 100%);
+  color: white;
+}
+.css {
+  background-image: linear-gradient(135deg, #52e5e7 10%, #130cb7 100%);
+  color: white;
+}
+.html {
+  background-image: linear-gradient(135deg, #fff6b7 10%, #f6416c 100%);
+  color: white;
+}
