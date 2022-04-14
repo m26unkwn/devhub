@@ -16,18 +16,23 @@ export const Explore = () => {
   const buttonTitle = [
     {
       title: "All Videos",
+      param: "allvideos",
     },
     {
       title: "Javascript",
+      param: "javascript",
     },
     {
       title: "React",
+      param: "react",
     },
     {
       title: "Html",
+      param: "html",
     },
     {
       title: "Css",
+      param: "css",
     },
   ];
 
@@ -36,19 +41,20 @@ export const Explore = () => {
 
   const filterDispatch = (e, title) => {
     e.preventDefault();
-    videoDispatch({ type: "ADD_FILTER", filter: title.toLowerCase() });
+    videoDispatch({ type: "ADD_FILTER", filter: title });
   };
 
   return (
     <div className='main-container'>
       <div className='explore-wrapper'>
         <div className='explore-category flex flex-gap'>
-          {buttonTitle.map(({ title }) => (
+          {buttonTitle.map(({ title, param }) => (
             <Button
               key={title}
               title={title}
               filterDispatch={filterDispatch}
               filter={filters}
+              param={param}
             />
           ))}
         </div>

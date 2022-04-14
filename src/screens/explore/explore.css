@@ -2,7 +2,6 @@
 
 .main-container {
   grid-area: main;
-  background-color: var(--bg-container-color);
 }
 .explore-wrapper {
   margin: 2rem;
@@ -16,4 +15,14 @@
 }
 .explore-category {
   margin-bottom: 2rem;
+}
+@media only screen and (max-width: 700px) {
+  .explore-category {
+    overflow-x: scroll;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .explore-category {
+    overflow-x: scroll;
+  }
 }

@@ -44,11 +44,27 @@
     width: 150px;
     height: 200px;
   }
+  .category-action {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @media only screen and (max-width: 400px) {
   .category-item {
     width: 100px;
     height: 150px;
+  }
+  .category-action {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

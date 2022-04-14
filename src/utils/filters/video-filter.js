@@ -1,7 +1,7 @@
 /** @format */
 
 export const videoFilter = (videos, filter = null) => {
-  if (filter === "all videos") {
+  if (filter === "allvideos") {
     return videos;
   } else if (filter.length > 0) {
     return videos.filter(

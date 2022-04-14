@@ -25,7 +25,7 @@
 
 body {
   font-family: "Poppins";
-  background: var(--bg-color);
+  background-color: var(--bg-container-color);
 }
 
 .main-grid-container {
