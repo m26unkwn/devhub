@@ -1,3 +1,4 @@
+/** @format */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://lightt-ui.netlify.app/lightui.css");
@@ -24,7 +25,7 @@
 
 body {
   font-family: "Poppins";
-  background: var(--bg-color);
+  background: var(--bg-container-color);
 }
 
 .main-grid-container {
@@ -36,7 +37,7 @@ body {
   grid-template-rows: 4rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .main-grid-container {
     display: grid;
     grid-template-areas:

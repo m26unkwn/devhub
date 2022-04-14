@@ -13,3 +13,4 @@ export { default as ReactLogo } from "./React.svg";
 export { default as Javascript } from "./Javascript.svg";
 export { default as CssLogo } from "./Css.svg";
 export { default as HtmlLogo } from "./HtmlLogo.svg";
+export { default as MenuIcon } from "./ElipsesIcon.svg";
