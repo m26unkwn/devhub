@@ -8,6 +8,9 @@
 .video-card-content {
   padding: 1rem;
 }
+.video-thumbnail > a > img {
+  border-radius: 10px 10px 0 0;
+}
 .video-card-title {
   white-space: nowrap;
   overflow: hidden;
