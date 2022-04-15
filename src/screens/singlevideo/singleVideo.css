@@ -1,0 +1,52 @@
+/** @format */
+
+.main-container {
+  grid-area: main;
+  background-color: var(--bg-container-color);
+}
+.video-wrapper {
+  margin: 2rem;
+  width: 90%;
+}
+.video-player {
+  height: 30rem;
+}
+.react-player {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.video-content {
+  margin: 1rem 0;
+}
+.video-head {
+  gap: 0.5rem;
+}
+.video-title {
+  color: var(--heading-text-color);
+}
+.video-views {
+  color: #949393;
+}
+.video-action {
+  width: 20rem;
+  margin-bottom: 2rem;
+}
+.btn-title {
+  text-align: center;
+}
+.video-creator > a {
+  color: inherit;
+  text-decoration: none;
+  color: var(--heading-text-color);
+}
+
+@media only screen and (max-width: 700px) {
+  .video-player {
+    height: 20rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .video-player {
+    height: 10rem;
+  }
+}

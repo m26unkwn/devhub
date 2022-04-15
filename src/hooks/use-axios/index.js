@@ -8,7 +8,7 @@ import axios from "axios";
 export const useAxios = ({
   method = "get",
   url,
-  property,
+  property = null,
   body = null,
   headers = null,
 }) => {
@@ -21,7 +21,7 @@ export const useAxios = ({
       try {
         setLoading(true);
         const { data } = await axios({ method, url, body, headers });
-        setResponse(data[property]);
+        setResponse(property ? data[property] : data);
         setLoading(false);
       } catch (error) {
         setError(error);

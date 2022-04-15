@@ -15,6 +15,7 @@ import {
   History,
   WatchLater,
   Profile,
+  SingleVideo,
 } from "./screens";
 
 let videoConfig = {
@@ -45,6 +46,7 @@ function App() {
         <Route path='/history' element={<History />} />
         <Route path='/watchlater' element={<WatchLater />} />
         <Route path='/Profile' element={<Profile />} />
+        <Route path='/explore/:videoId' element={<SingleVideo />} />
       </Routes>
     </div>
   );
