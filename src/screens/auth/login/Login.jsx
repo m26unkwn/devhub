@@ -40,12 +40,7 @@ export const Login = () => {
 
   const testUserLogin = (e) => {
     e.preventDefault();
-    // getUserAuth(
-    //   "/api/auth/login",
-    //   "adarshbalika@gmail.com",
-    //   "Adarshbalika1!",
-    //   cartData
-    // );
+    getUserLogin("adarshbalika@gmail.com", "loginState.password");
   };
 
   return (
