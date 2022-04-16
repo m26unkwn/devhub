@@ -1,3 +1,5 @@
+/** @format */
+
 import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 /**
@@ -12,7 +14,7 @@ export const users = [
     firstName: "Adarsh",
     lastName: "Balika",
     email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
+    password: "adarshBalikaQa!1",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

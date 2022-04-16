@@ -37,7 +37,6 @@ export const Explore = () => {
   } = useVideos();
 
   const filteredVideos = videoFilter(videos, filters);
-  console.log(filteredVideos);
 
   const filterDispatch = (e, title) => {
     e.preventDefault();
