@@ -8,6 +8,10 @@ const VideoContext = createContext();
 let intialVideoState = {
   videos: [],
   filters: "",
+  playlist: [],
+  likes: [],
+  watchLater: [],
+  history: [],
 };
 
 const VideoProvider = ({ children }) => {

@@ -14,3 +14,5 @@ export { default as Javascript } from "./Javascript.svg";
 export { default as CssLogo } from "./Css.svg";
 export { default as HtmlLogo } from "./HtmlLogo.svg";
 export { default as MenuIcon } from "./ElipsesIcon.svg";
+export { default as Eye } from "./Eye.svg";
+export { default as DisableEye } from "./DisableEye.svg";

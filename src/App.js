@@ -16,7 +16,10 @@ import {
   WatchLater,
   Profile,
   SingleVideo,
+  Signup,
+  Login,
 } from "./screens";
+import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 
 let videoConfig = {
   method: "get",
@@ -41,11 +44,48 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/explore' element={<Explore />} />
-        <Route path='/playlist' element={<Playlist />} />
-        <Route path='/likedvedios' element={<LikeVideo />} />
-        <Route path='/history' element={<History />} />
-        <Route path='/watchlater' element={<WatchLater />} />
-        <Route path='/Profile' element={<Profile />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        <Route
+          path='/playlist'
+          element={
+            <PrivateRoute>
+              <Playlist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/likedvedios'
+          element={
+            <PrivateRoute>
+              <LikeVideo />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/history'
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/watchlater'
+          element={
+            <PrivateRoute>
+              <WatchLater />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/Profile'
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
         <Route path='/explore/:videoId' element={<SingleVideo />} />
       </Routes>
     </div>
