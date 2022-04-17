@@ -1,3 +1,5 @@
+/** @format */
+
 import { Response } from "miragejs";
 import { requiresAuth } from "../utils/authUtils";
 
@@ -77,7 +79,7 @@ export const removeItemFromWatchLaterVideos = function (schema, request) {
   if (user) {
     const videoId = request.params.videoId;
     const filteredVideos = user.watchlater.filter(
-      (item) => item._id !== videoId
+      (item) => item._id === videoId
     );
     this.db.users.update({ watchlater: filteredVideos });
     return new Response(200, {}, { watchlater: filteredVideos });

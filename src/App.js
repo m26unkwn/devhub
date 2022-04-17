@@ -3,7 +3,7 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
-import { useVideos } from "./context";
+import { useToast, useVideos } from "./context";
 import { useAxios } from "./hooks";
 
 import {
@@ -19,7 +19,7 @@ import {
   Signup,
   Login,
 } from "./screens";
-import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+import { PrivateRoute, Toast } from "./components";
 
 let videoConfig = {
   method: "get",
@@ -29,6 +29,8 @@ let videoConfig = {
 
 function App() {
   const { videoDispatch } = useVideos();
+
+  const { toast } = useToast();
 
   const [videos] = useAxios(videoConfig);
 
@@ -41,6 +43,7 @@ function App() {
   return (
     <div className='main-grid-container'>
       <Navbar />
+      {toast.toast && <Toast />}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/explore' element={<Explore />} />

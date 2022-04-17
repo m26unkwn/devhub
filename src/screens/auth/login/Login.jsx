@@ -40,7 +40,7 @@ export const Login = () => {
 
   const testUserLogin = (e) => {
     e.preventDefault();
-    getUserLogin("adarshbalika@gmail.com", "loginState.password");
+    getUserLogin("adarshbalika@gmail.com", "adarshBalikaQa!1");
   };
 
   return (

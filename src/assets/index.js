@@ -16,3 +16,4 @@ export { default as HtmlLogo } from "./HtmlLogo.svg";
 export { default as MenuIcon } from "./ElipsesIcon.svg";
 export { default as Eye } from "./Eye.svg";
 export { default as DisableEye } from "./DisableEye.svg";
+export { default as Delete } from "./Delete.svg";

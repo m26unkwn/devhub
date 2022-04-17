@@ -1,0 +1,7 @@
+/** @format */
+
+.toast-position {
+  position: fixed;
+  right: 0;
+  top: 10%;
+}

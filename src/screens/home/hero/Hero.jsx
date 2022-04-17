@@ -1,7 +1,7 @@
 /** @format */
+import { Link } from "react-router-dom";
 import "./hero.css";
 
-import { LeftArrow } from "../../../assets";
 export const Hero = () => {
   return (
     <section className='hero-wrapper'>
@@ -15,7 +15,7 @@ export const Hero = () => {
       </div>
       <div className=' hero-action flex'>
         <button className='btn'>
-          Explore Now <img src={LeftArrow} alt='explore_icon' />
+          <Link to='/explore'>Explore</Link>
         </button>
       </div>
     </section>

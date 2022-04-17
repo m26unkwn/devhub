@@ -1,26 +1,41 @@
 /** @format */
 
-import { Link, useParams } from "react-router-dom";
-import { useAxios } from "../../hooks";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { useAxios, useHandler } from "../../hooks";
 import ReactPlayer from "react-player";
 import { ReactComponent as Playlist } from "../../assets/PaperPlus.svg";
 import { ReactComponent as Like } from "../../assets/Like.svg";
 import { ReactComponent as WatchLater } from "../../assets/TimeCircle.svg";
-
+import { Loader } from "../../components";
 import "./singleVideo.css";
+import { useVideos } from "../../context";
+import { isPresent } from "../../utils";
 
 export const SingleVideo = () => {
   const { videoId } = useParams();
-  const [singleVideo] = useAxios({
+
+  const {
+    videoState: { likes, watchLater },
+  } = useVideos();
+  const [singleVideo, Loading] = useAxios({
     method: "get",
     url: `/api/video/${videoId}`,
     property: "video",
   });
+  const [loading, handlers] = useHandler();
+  const location = useLocation();
+
+  console.log(watchLater);
+
+  const isVideoInLike = isPresent(likes, videoId);
+  const isVideoInWatchLater = isPresent(watchLater, videoId);
+
+  console.log({ isVideoInLike, isVideoInWatchLater });
 
   return (
     <div className='main-container'>
       <div className='video-wrapper'>
-        {singleVideo ? (
+        {singleVideo && (
           <>
             <div className='video-player'>
               <ReactPlayer
@@ -29,6 +44,7 @@ export const SingleVideo = () => {
                 width='100%'
                 height='100%'
                 controls
+                onPlay={() => handlers.addToHistory(singleVideo)}
               />
             </div>
             <div className='video-content'>
@@ -38,10 +54,24 @@ export const SingleVideo = () => {
               </div>
               <div className='video-action flex jc-between'>
                 <div className='btn-wrapper flex-col ai-center jc-center'>
-                  <button className='btn btn-icon'>
-                    <Like width='30px' height='30px' />
+                  <button
+                    disabled={loading}
+                    onClick={() =>
+                      isVideoInLike
+                        ? handlers.removeFromLike(singleVideo)
+                        : handlers.addToLike(singleVideo, location)
+                    }
+                    className='btn btn-icon'>
+                    <Like
+                      fill={isVideoInLike ? "var(--danger-color)" : "none"}
+                      width='30px'
+                      height='30px'
+                      stroke='white'
+                    />
                   </button>
-                  <p className='btn-title'>Like</p>
+                  <p className='btn-title'>
+                    {isVideoInLike ? "Liked" : "Like"}
+                  </p>
                 </div>
                 <div className='btn-wrapper flex-col ai-center jc-center'>
                   <button className='btn btn-icon '>
@@ -50,8 +80,21 @@ export const SingleVideo = () => {
                   <p className='btn-title'>Save</p>
                 </div>
                 <div className='btn-wrapper flex-col ai-center jc-center'>
-                  <button className='btn btn-icon'>
-                    <WatchLater width='30px' height='30px' />
+                  <button
+                    disabled={loading}
+                    onClick={() =>
+                      isVideoInWatchLater
+                        ? handlers.removeFromWatchLater(singleVideo)
+                        : handlers.addToWatchLater(singleVideo, location)
+                    }
+                    className='btn btn-icon'>
+                    <WatchLater
+                      fill={
+                        isVideoInWatchLater ? "var(--primary-color)" : "none"
+                      }
+                      width='30px'
+                      height='30px'
+                    />
                   </button>
                   <p className='btn-title'>Watch Later</p>
                 </div>
@@ -70,9 +113,8 @@ export const SingleVideo = () => {
               </div>
             </div>
           </>
-        ) : (
-          <h1>Loading</h1>
         )}
+        {Loading && <Loader />}
       </div>
     </div>
   );
