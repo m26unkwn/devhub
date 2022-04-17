@@ -58,7 +58,7 @@ export const SingleVideo = () => {
                     disabled={loading}
                     onClick={() =>
                       isVideoInLike
-                        ? handlers.removeFromLike(singleVideo)
+                        ? handlers.removeFromLike(videoId)
                         : handlers.addToLike(singleVideo, location)
                     }
                     className='btn btn-icon'>
@@ -84,7 +84,7 @@ export const SingleVideo = () => {
                     disabled={loading}
                     onClick={() =>
                       isVideoInWatchLater
-                        ? handlers.removeFromWatchLater(singleVideo)
+                        ? handlers.removeFromWatchLater(videoId)
                         : handlers.addToWatchLater(singleVideo, location)
                     }
                     className='btn btn-icon'>

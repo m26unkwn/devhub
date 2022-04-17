@@ -11,7 +11,7 @@ export const LikeVideo = () => {
     videoState: { likes },
   } = useVideos();
 
-  const [Loading, handlers] = useHandler();
+  const [Loading, { removeFromLike }] = useHandler();
 
   return (
     <div className='main-container'>
@@ -24,8 +24,8 @@ export const LikeVideo = () => {
                 <Card
                   key={video._id}
                   props={video}
-                  removeHandler={handlers.removeFromLike}
                   loading={Loading}
+                  removeHandler={removeFromLike}
                 />
               ))}
             </div>

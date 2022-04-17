@@ -74,10 +74,10 @@ export const useHandler = () => {
   // this is add to unlike handler.
   // it do the operation of removing any video from like section.
 
-  const removeFromLike = (video) => {
+  const removeFromLike = (id) => {
     serverCalls(
       "DELETE",
-      `/api/user/likes/${video._Id}`,
+      `/api/user/likes/${id}`,
       "ADD_VIDEO_INTO_LIKES",
       "likes",
       "Removed from like video."
@@ -105,10 +105,10 @@ export const useHandler = () => {
   // this is remove watch later handler.
   // it do the operation of removing any video from watch section.
 
-  const removeFromWatchLater = (video) => {
+  const removeFromWatchLater = (id) => {
     serverCalls(
       "DELETE",
-      `/api/user/watchlater/${video._Id}`,
+      `/api/user/watchlater/${id}`,
       "ADD_VIDEO_INTO_WATCH_LATER",
       "watchlater",
       "Removed from Watch Later."
@@ -135,10 +135,10 @@ export const useHandler = () => {
   //it is remove to history handler
   // it do the operation of   removing the video from user's history.
 
-  const removeFromHistory = (video) => {
+  const removeFromHistory = (id) => {
     serverCalls(
       "DELETE",
-      `/api/user/watchlater/${video._Id}`,
+      `/api/user/history/${id}`,
       "ADD_VIDEO_INTO_HISTORY",
       "history",
       "Removed from History."
