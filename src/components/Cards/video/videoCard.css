@@ -25,6 +25,7 @@
 .video-card-action {
   margin-left: auto;
 }
+
 @media only screen and (max-width: 700px) {
   .video-card {
     width: 10rem;

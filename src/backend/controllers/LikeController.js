@@ -1,3 +1,5 @@
+/** @format */
+
 import { Response } from "miragejs";
 import { requiresAuth } from "../utils/authUtils";
 

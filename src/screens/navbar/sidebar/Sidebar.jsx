@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
   Logo,
@@ -58,7 +58,7 @@ export const Sidebar = () => {
                 isActive ? "sidebar-items nav-link-active " : "sidebar-items"
               }>
               <img src={Like} width='24px' alt='home_icon' />
-              <span className='nav-title'>Liked Vedios</span>
+              <span className='nav-title'>Liked Videos</span>
             </NavLink>
             <NavLink
               to='/watchlater'
@@ -79,10 +79,14 @@ export const Sidebar = () => {
           </div>
         </div>
         <div className='sidebar-user'>
-          <Link to='/profile' className='sidebar-items'>
+          <NavLink
+            to='/profile'
+            className={({ isActive }) =>
+              isActive ? "sidebar-items nav-link-active " : "sidebar-items"
+            }>
             <img src={Profile} alt='home_icon' />
             <span className='nav-title'>Profile</span>
-          </Link>
+          </NavLink>
         </div>
       </div>
     </div>

@@ -36,13 +36,18 @@ const AuthProvider = ({ children }) => {
           foundUser: foundUser,
         })
       );
+
       authDispatch({
         type: "ADD_TOKEN",
         payload: encodedToken,
       });
       authDispatch({
         type: "ADD_USER_DATA",
-        payload: foundUser,
+        payload: {
+          firstName: foundUser.firstName,
+          email: foundUser.email,
+          lastName: foundUser.lastName,
+        },
       });
       videoDispatch({
         type: "ADD_VIDEO_INTO_LIKES",

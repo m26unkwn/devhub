@@ -2,13 +2,7 @@
 .hero-wrapper {
   padding: 1rem 4rem;
   border-radius: 10px;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(52, 52, 255, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
-  );
+
   color: var(--text-secondary-color);
 }
 .hero-title-head {
@@ -18,22 +12,6 @@
   font-size: clamp(1rem, 3vh, 2rem);
 }
 
-.hero-action {
-  margin: 1rem 0;
-}
-.hero-action > button {
-  color: black;
-  font-family: "poppins";
-  font-weight: 500;
-  background: var(--bg-color);
-  border-radius: 4px;
-  width: 10rem;
-}
-
-button > a {
-  text-decoration: none;
-  color: inherit;
-}
 @media only screen and (max-width: 700px) {
   .hero-wrapper {
     padding: 1rem 2rem;
