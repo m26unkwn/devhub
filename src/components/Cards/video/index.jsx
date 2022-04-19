@@ -1,12 +1,19 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import "./videoCard.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as MenuIcon } from "../../../assets/ElipsesIcon.svg";
+import { Modal } from "../../Modal/Modal";
 
 export const VideoCard = ({ props }) => {
+  const [openModal, setOpenModal] = useState(false);
+
   const { thumbnail, title, _id } = props;
+
+  const openTheModal = () => {
+    setOpenModal(!openModal);
+  };
 
   return (
     <div className=' video-card card-container flex flex-col '>
@@ -20,11 +27,12 @@ export const VideoCard = ({ props }) => {
           <Link to={`/explore/${_id}`}>{title}</Link>
         </div>
         <div className='video-card-action '>
-          <button className='btn btn-icon'>
+          <button onClick={openTheModal} className='btn btn-icon'>
             <MenuIcon />
           </button>
         </div>
       </div>
+      {openModal && <Modal>Modal</Modal>}
     </div>
   );
 };
