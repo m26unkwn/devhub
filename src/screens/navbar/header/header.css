@@ -9,6 +9,9 @@
   top: 0;
   z-index: 2;
 }
+.head-logo {
+  display: none;
+}
 
 .search-bar {
   align-items: center;
@@ -44,7 +47,7 @@
   color: var(--heading-text-color);
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 780px) {
   .search-bar {
     width: 100%;
   }
@@ -57,5 +60,19 @@
 
   .signup-btn {
     display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .header-wrapper {
+    padding: 0 1rem;
+  }
+
+  .head-logo {
+    display: block;
+    margin-right: 1rem;
+  }
+  .auth-action-wrapper {
+    margin-left: 1rem;
+    width: none;
   }
 }

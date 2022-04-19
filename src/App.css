@@ -37,7 +37,7 @@ body {
   grid-template-rows: 4rem;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 780px) {
   .main-grid-container {
     display: grid;
     grid-template-areas:
@@ -45,5 +45,16 @@ body {
       "sidebar main ";
     grid-template-columns: 5rem 1fr;
     grid-template-rows: 4rem;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .main-grid-container {
+    display: grid;
+    grid-template-areas:
+      "header "
+      "main "
+      "mobile";
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
   }
 }
