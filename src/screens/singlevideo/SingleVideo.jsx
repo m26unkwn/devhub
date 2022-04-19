@@ -23,7 +23,7 @@ export const SingleVideo = () => {
     property: "video",
   });
 
-  const [loading, handlers] = useHandler();
+  const [handlers] = useHandler();
   const location = useLocation();
 
   const isVideoInLike = isPresent(likes, videoId);
@@ -52,7 +52,6 @@ export const SingleVideo = () => {
               <div className='video-action flex jc-between'>
                 <div className='btn-wrapper flex-col ai-center jc-center'>
                   <button
-                    disabled={loading}
                     onClick={() =>
                       isVideoInLike
                         ? handlers.removeFromLike(videoId)
@@ -78,7 +77,6 @@ export const SingleVideo = () => {
                 </div>
                 <div className='btn-wrapper flex-col ai-center jc-center'>
                   <button
-                    disabled={loading}
                     onClick={() =>
                       isVideoInWatchLater
                         ? handlers.removeFromWatchLater(videoId)

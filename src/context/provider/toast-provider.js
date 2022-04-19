@@ -10,9 +10,12 @@ const ToastProvider = ({ children }) => {
     toastVarient: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
   let value = {
     toast,
     setToast,
+    loading,
+    setLoading,
   };
   return <Toast.Provider value={value}>{children}</Toast.Provider>;
 };

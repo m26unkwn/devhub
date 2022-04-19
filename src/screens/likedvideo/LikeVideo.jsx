@@ -11,20 +11,19 @@ export const LikeVideo = () => {
     videoState: { likes },
   } = useVideos();
 
-  const [Loading, { removeFromLike }] = useHandler();
+  const [{ removeFromLike }] = useHandler();
 
   return (
     <div className='main-container'>
       <div className='like-wrapper'>
         {likes.length > 0 ? (
           <>
-            <Hero className='background-color' title='Liked Videos' />
+            <Hero className='background-color' title='Your Liked Videos' />
             <div className='video-card-wrapper flex flex-col flex-gap'>
               {likes.map((video) => (
                 <Card
                   key={video._id}
                   props={video}
-                  loading={Loading}
                   removeHandler={removeFromLike}
                 />
               ))}

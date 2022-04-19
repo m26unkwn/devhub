@@ -3,7 +3,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth, useToast, useVideos } from "../../context";
 import axios from "axios";
-import { useState } from "react";
 
 export const useHandler = () => {
   const { videoDispatch } = useVideos();
@@ -11,9 +10,8 @@ export const useHandler = () => {
     authState: { token },
   } = useAuth();
 
-  const { setToast } = useToast();
+  const { setToast, setLoading } = useToast();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
   // this function handle all the api calls
 
@@ -197,5 +195,5 @@ export const useHandler = () => {
     removeVideofromPlaylist,
   };
 
-  return [loading, handlers];
+  return [handlers];
 };

@@ -12,12 +12,12 @@
   font-size: clamp(1rem, 3vh, 2rem);
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 780px) {
   .hero-wrapper {
     padding: 1rem 2rem;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   .hero-wrapper {
     padding: 1rem;
   }

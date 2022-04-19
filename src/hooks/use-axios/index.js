@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { useToast } from "../../context";
 
 /** @format */
 export const useAxios = ({
@@ -13,8 +14,8 @@ export const useAxios = ({
   headers = null,
 }) => {
   const [response, setResponse] = useState();
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { setLoading } = useToast();
 
   useEffect(() => {
     (async function () {
@@ -32,5 +33,5 @@ export const useAxios = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [method, url, property, headers, body]);
 
-  return [response, loading, error];
+  return [response, error];
 };

@@ -5,9 +5,10 @@ import { useHandler } from "../../../hooks";
 import { isPresent } from "../../../utils";
 
 export const PlaylistCheckbox = ({ playlist, video }) => {
-  const [loading, handlers] = useHandler();
+  const [handlers] = useHandler();
+
   const isVideoPresent = isPresent(playlist.videos, video._id);
-  console.log("video present in playlist", isVideoPresent);
+
   const handlePlaylist = (e) => {
     if (!e.target.checked) {
       return handlers.removeVideofromPlaylist(playlist._id, video._id);

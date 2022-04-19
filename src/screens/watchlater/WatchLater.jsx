@@ -11,21 +11,23 @@ export const WatchLater = () => {
     videoState: { watchLater },
   } = useVideos();
 
-  const [Loading, handlers] = useHandler();
+  const [handlers] = useHandler();
 
   return (
     <div className='main-container'>
       <div className='watchlater-wrapper'>
         {watchLater.length > 0 ? (
           <>
-            <Hero className='background-color' title='Watch Later Videos' />
+            <Hero
+              className='background-color'
+              title='Your Watch Later Videos'
+            />
             <div className='video-card-wrapper flex flex-col flex-gap'>
               {watchLater.map((video) => (
                 <Card
                   key={video._id}
                   props={video}
                   removeHandler={handlers.removeFromWatchLater}
-                  loading={Loading}
                 />
               ))}
             </div>

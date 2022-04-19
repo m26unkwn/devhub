@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import { useState } from "react";
 import { useVideos } from "../../context";
 import "./playlistModal.css";
 import { useHandler } from "../../hooks";
@@ -16,7 +15,7 @@ export const PlaylistModal = ({ video, id, closeModal }) => {
     videoState: { watchLater, likes },
   } = useVideos();
 
-  const [loading, handlers] = useHandler();
+  const [handlers] = useHandler();
 
   const handleWatchlater = (e) => {
     if (!e.target.checked) {

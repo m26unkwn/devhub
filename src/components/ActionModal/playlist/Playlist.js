@@ -8,7 +8,7 @@ import { PlaylistCheckbox } from "./PlaylistCheckbox";
 
 export const Playlist = ({ video }) => {
   const [createPlaylist, setCreatePlaylist] = useState(false);
-  const [loading, handlers] = useHandler();
+  const [handlers] = useHandler();
   const [playlist, setPlaylist] = useState({
     title: "",
   });
