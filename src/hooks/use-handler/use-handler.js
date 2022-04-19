@@ -152,10 +152,10 @@ export const useHandler = () => {
         "post",
         "/api/user/playlists",
         "ADD_PLAYLIST",
-        "playlist",
+        "playlists",
         "Added to playlist.",
         {
-          playlist,
+          playlist: playlist,
         }
       );
   };

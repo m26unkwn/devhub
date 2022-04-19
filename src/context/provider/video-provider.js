@@ -8,7 +8,7 @@ const VideoContext = createContext();
 let intialVideoState = {
   videos: [],
   filters: "",
-  playlist: [],
+  playlists: [],
   likes: [],
   watchLater: [],
   history: [],

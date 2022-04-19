@@ -9,19 +9,14 @@ import { ReactComponent as CloseIcon } from "../../assets/Close.svg";
 import { isPresent } from "../../utils";
 import { WatchLater } from "./watchLater/WatchLater";
 import { Like } from "./Likes/Like";
+import { Playlist } from "./playlist/Playlist";
 
 export const PlaylistModal = ({ video, id, closeModal }) => {
   const {
-    videoState: { playlist, watchLater, likes },
+    videoState: { watchLater, likes },
   } = useVideos();
 
   const [loading, handlers] = useHandler();
-
-  const [createPlaylist, setCreatePlaylist] = useState(false);
-
-  const opeCreatePlaylist = () => {
-    setCreatePlaylist((prev) => !prev);
-  };
 
   const addToWatchlater = (e) => {
     if (!e.target.checked) {
@@ -48,22 +43,19 @@ export const PlaylistModal = ({ video, id, closeModal }) => {
       <div className='card-head'>
         <b>Save to</b>
         <button className='close-modal' onClick={closeModal}>
-          <CloseIcon fill='black' />
+          <CloseIcon fill='rgb(63, 63, 63)' />
         </button>
       </div>
+
       <div className='card-divider'></div>
+
       <div className='card-content flex flex-gap flex-col'>
         <WatchLater
           videoPresent={videoPresent}
           addToWatchlater={addToWatchlater}
         />
         <Like videoPresent={isVideoInLike} addToLike={addToLike} />
-      </div>
-
-      <div className='card-action flex jc-center'>
-        <button className='btn ' onClick={opeCreatePlaylist}>
-          CREATE PLAYLIST
-        </button>
+        <Playlist />
       </div>
     </div>
   );

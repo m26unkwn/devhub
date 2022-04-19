@@ -3,9 +3,12 @@
 .card-content {
   font-size: 1rem;
 }
-.card-content > input {
+.input > input {
   width: 1rem;
   height: 1rem;
+}
+.create-playlist {
+  width: 100%;
 }
 .close-modal {
   all: unset;
