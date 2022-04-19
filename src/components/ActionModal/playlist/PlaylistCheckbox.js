@@ -1,12 +1,27 @@
 /** @format */
 
 import React from "react";
+import { useHandler } from "../../../hooks";
+import { isPresent } from "../../../utils";
 
-export const PlaylistCheckbox = ({ playlist }) => {
-  console.log(playlist);
+export const PlaylistCheckbox = ({ playlist, video }) => {
+  const [loading, handlers] = useHandler();
+  const isVideoPresent = isPresent(playlist.videos, video._id);
+  console.log("video present in playlist", isVideoPresent);
+  const handlePlaylist = (e) => {
+    if (!e.target.checked) {
+      return handlers.removeVideofromPlaylist(playlist._id, video._id);
+    } else {
+      return handlers.addVideoIntoPlaylist(playlist._id, video);
+    }
+  };
   return (
     <div className='input flex flex-gap ai-center'>
-      <input type='checkbox' checked={false} />
+      <input
+        type='checkbox'
+        checked={isVideoPresent}
+        onChange={handlePlaylist}
+      />
       <label>{playlist.title}</label>
     </div>
   );

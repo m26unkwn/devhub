@@ -153,10 +153,35 @@ export const useHandler = () => {
         "/api/user/playlists",
         "ADD_PLAYLIST",
         "playlists",
-        "Added to playlist.",
+        "PLAYLIST CREATED.",
         {
           playlist: playlist,
         }
+      );
+  };
+
+  const addVideoIntoPlaylist = (id, video) => {
+    token &&
+      serverCalls(
+        "post",
+        `/api/user/playlists/${id}`,
+        "ADD_VIDEO_INTO_PLAYLIST",
+        "playlist",
+        "Added to playlist.",
+        {
+          video: video,
+        }
+      );
+  };
+
+  const removeVideofromPlaylist = (playlistid, videoid) => {
+    token &&
+      serverCalls(
+        "delete",
+        `/api/user/playlists/${playlistid}/${videoid}`,
+        "ADD_VIDEO_INTO_PLAYLIST",
+        "playlist",
+        "REMOVE FROM PLAYLIST."
       );
   };
 
@@ -168,6 +193,8 @@ export const useHandler = () => {
     addToHistory,
     removeFromHistory,
     createPlaylist,
+    addVideoIntoPlaylist,
+    removeVideofromPlaylist,
   };
 
   return [loading, handlers];

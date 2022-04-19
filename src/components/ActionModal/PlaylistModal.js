@@ -18,7 +18,7 @@ export const PlaylistModal = ({ video, id, closeModal }) => {
 
   const [loading, handlers] = useHandler();
 
-  const addToWatchlater = (e) => {
+  const handleWatchlater = (e) => {
     if (!e.target.checked) {
       return handlers.removeFromWatchLater(id);
     } else {
@@ -28,7 +28,7 @@ export const PlaylistModal = ({ video, id, closeModal }) => {
 
   let videoPresent = isPresent(watchLater, id);
 
-  const addToLike = (e) => {
+  const handleLike = (e) => {
     if (!e.target.checked) {
       return handlers.removeFromLike(id);
     } else {
@@ -52,10 +52,10 @@ export const PlaylistModal = ({ video, id, closeModal }) => {
       <div className='card-content flex flex-gap flex-col'>
         <WatchLater
           videoPresent={videoPresent}
-          addToWatchlater={addToWatchlater}
+          handleWatchlater={handleWatchlater}
         />
-        <Like videoPresent={isVideoInLike} addToLike={addToLike} />
-        <Playlist />
+        <Like videoPresent={isVideoInLike} handleLike={handleLike} />
+        <Playlist video={video} />
       </div>
     </div>
   );
