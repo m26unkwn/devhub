@@ -1,10 +1,18 @@
 /** @format */
 
 import "./modal.css";
-import { useVideos } from "../../context";
 
-export const Modal = ({ children }) => {
+export const Modal = ({ children, setState }) => {
+  const closeModal = (e) => {
+    if (e.target.classList.contains("modal-backdrop")) {
+      setState(false);
+    }
+  };
   return (
-    <div className='modal-backdrop flex ai-center jc-center'>{children}</div>
+    <div
+      className='modal-backdrop flex ai-center jc-center'
+      onClick={(e) => closeModal(e)}>
+      {children}
+    </div>
   );
 };

@@ -1,0 +1,14 @@
+/** @format */
+
+.card-content {
+  font-size: 1rem;
+}
+.card-content > input {
+  width: 1rem;
+  height: 1rem;
+}
+.close-modal {
+  all: unset;
+  cursor: pointer;
+  fill: rgb(63, 63, 63);
+}

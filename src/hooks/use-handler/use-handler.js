@@ -145,6 +145,21 @@ export const useHandler = () => {
     );
   };
 
+  //playlistSection
+  const createPlaylist = (playlist) => {
+    token &&
+      serverCalls(
+        "post",
+        "/api/user/playlists",
+        "ADD_PLAYLIST",
+        "playlist",
+        "Added to playlist.",
+        {
+          playlist,
+        }
+      );
+  };
+
   const handlers = {
     addToLike,
     removeFromLike,
@@ -152,6 +167,7 @@ export const useHandler = () => {
     addToWatchLater,
     addToHistory,
     removeFromHistory,
+    createPlaylist,
   };
 
   return [loading, handlers];

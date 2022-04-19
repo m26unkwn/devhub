@@ -5,12 +5,15 @@ import { createContext, useState, useContext } from "react";
 let Modal = createContext();
 
 const ModalProvider = ({ children }) => {
-  const [modal, setModal] = useState(modal);
+  const [modal, setModal] = useState(false);
   const openModal = () => {
     setModal(true);
+    console.log("hello");
   };
-  const closeModal = () => {
-    setModal(false);
+  const closeModal = (e) => {
+    if (e.target.classList.contains("modal-backdrop")) {
+      setModal(false);
+    }
   };
   let value = {
     openModal,
