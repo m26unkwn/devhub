@@ -10,27 +10,24 @@ import { Loader } from "../../components";
 import "./singleVideo.css";
 import { useVideos } from "../../context";
 import { isPresent } from "../../utils";
-
 export const SingleVideo = () => {
   const { videoId } = useParams();
 
   const {
     videoState: { likes, watchLater },
   } = useVideos();
+
   const [singleVideo, Loading] = useAxios({
     method: "get",
     url: `/api/video/${videoId}`,
     property: "video",
   });
+
   const [loading, handlers] = useHandler();
   const location = useLocation();
 
-  console.log(watchLater);
-
   const isVideoInLike = isPresent(likes, videoId);
   const isVideoInWatchLater = isPresent(watchLater, videoId);
-
-  console.log({ isVideoInLike, isVideoInWatchLater });
 
   return (
     <div className='main-container'>
@@ -44,7 +41,7 @@ export const SingleVideo = () => {
                 width='100%'
                 height='100%'
                 controls
-                onPlay={() => handlers.addToHistory(singleVideo)}
+                onStart={() => handlers.addToHistory(singleVideo)}
               />
             </div>
             <div className='video-content'>
