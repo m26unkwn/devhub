@@ -32,7 +32,6 @@ export const useHandler = () => {
         data: body,
         headers: headers,
       });
-      console.log("data coming from server", data);
       videoDispatch({ type, payload: data[property] });
       setToast({
         toastVarient: "success",
@@ -40,6 +39,9 @@ export const useHandler = () => {
         toast: true,
       });
       setLoading(false);
+      if (message === "PLAYLIST DELETED") {
+        navigate("/playlist");
+      }
     } catch (error) {
       setToast({
         toast: true,
@@ -158,6 +160,16 @@ export const useHandler = () => {
       );
   };
 
+  const removePlaylist = (playlistId) => {
+    serverCalls(
+      "delete",
+      `/api/user/playlists/${playlistId}`,
+      "ADD_PLAYLIST",
+      "playlists",
+      "PLAYLIST DELETED"
+    );
+  };
+
   const addVideoIntoPlaylist = (id, video) => {
     token &&
       serverCalls(
@@ -173,14 +185,13 @@ export const useHandler = () => {
   };
 
   const removeVideofromPlaylist = (playlistid, videoid) => {
-    token &&
-      serverCalls(
-        "delete",
-        `/api/user/playlists/${playlistid}/${videoid}`,
-        "ADD_VIDEO_INTO_PLAYLIST",
-        "playlist",
-        "REMOVE FROM PLAYLIST."
-      );
+    serverCalls(
+      "delete",
+      `/api/user/playlists/${playlistid}/${videoid}`,
+      "ADD_VIDEO_INTO_PLAYLIST",
+      "playlist",
+      "REMOVE FROM PLAYLIST."
+    );
   };
 
   const handlers = {
@@ -191,6 +202,7 @@ export const useHandler = () => {
     addToHistory,
     removeFromHistory,
     createPlaylist,
+    removePlaylist,
     addVideoIntoPlaylist,
     removeVideofromPlaylist,
   };

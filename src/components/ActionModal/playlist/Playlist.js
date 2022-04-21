@@ -3,15 +3,12 @@
 import React from "react";
 import { useState } from "react";
 import { useVideos } from "../../../context";
-import { useHandler } from "../../../hooks";
+import { CreatePlaylist } from "../createPlaylist/CreatePlaylist";
 import { PlaylistCheckbox } from "./PlaylistCheckbox";
 
 export const Playlist = ({ video }) => {
   const [createPlaylist, setCreatePlaylist] = useState(false);
-  const [handlers] = useHandler();
-  const [playlist, setPlaylist] = useState({
-    title: "",
-  });
+
   const {
     videoState: { playlists },
   } = useVideos();
@@ -20,15 +17,6 @@ export const Playlist = ({ video }) => {
     setCreatePlaylist(!createPlaylist);
   };
 
-  const onCreatePlaylist = (e) => {
-    setPlaylist({ title: e.target.value });
-  };
-
-  const createThePlaylist = () => {
-    setCreatePlaylist(false);
-    return handlers.createPlaylist(playlist);
-  };
-  console.log("playlist", playlists);
   return (
     <>
       {playlists.length > 0 &&
@@ -40,15 +28,7 @@ export const Playlist = ({ video }) => {
           />
         ))}
       {createPlaylist ? (
-        <div className='input-field create-playlist'>
-          <input type='text' onChange={onCreatePlaylist} />
-          <button
-            disabled={!playlist.title.trim("")}
-            onClick={createThePlaylist}
-            className={!playlist.title.trim("") ? "btn btn-disabled" : "btn"}>
-            Create
-          </button>
-        </div>
+        <CreatePlaylist />
       ) : (
         <div className='card-action flex jc-center'>
           <button className='btn ' onClick={openCreatePlaylist}>

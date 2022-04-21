@@ -15,7 +15,7 @@ export const videoReducer = (state, action) => {
     case "ADD_PLAYLIST":
       return { ...state, playlists: action.payload };
     case "ADD_VIDEO_INTO_PLAYLIST":
-      let filterPlaylist = state.playlists.filter((playlist) => {
+      const filterPlaylist = state.playlists.filter((playlist) => {
         if (playlist._id === action.payload._id) {
           playlist.videos = action.payload.videos;
         }

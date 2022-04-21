@@ -18,6 +18,7 @@ import {
   SingleVideo,
   Signup,
   Login,
+  SinglePlaylist,
 } from "./screens";
 import { PrivateRoute, Toast, Loader } from "./components";
 
@@ -58,6 +59,15 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path='/playlist/:playlistId'
+          element={
+            <PrivateRoute>
+              <SinglePlaylist />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path='/likedvedios'
           element={

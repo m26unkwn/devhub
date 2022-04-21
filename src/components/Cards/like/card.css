@@ -24,7 +24,14 @@
 }
 .all-card-title > a {
   text-decoration: none;
-  color: inherit;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-heading);
+}
+.card-desc {
+  font-size: 1rem;
+  color: var(--color-desc);
+  font-size: 500;
 }
 .all-card-action {
   margin-left: auto;

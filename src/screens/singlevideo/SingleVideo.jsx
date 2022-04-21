@@ -1,15 +1,22 @@
 /** @format */
 
-import { Link, useLocation, useParams } from "react-router-dom";
+import "./singleVideo.css";
+
+import { useState } from "react";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import { useAxios, useHandler } from "../../hooks";
+import { useAuth, useVideos } from "../../context";
+
 import ReactPlayer from "react-player";
-import { ReactComponent as Playlist } from "../../assets/PaperPlus.svg";
+
+import { ReactComponent as PlaylistIcon } from "../../assets/PaperPlus.svg";
 import { ReactComponent as Like } from "../../assets/Like.svg";
 import { ReactComponent as WatchLater } from "../../assets/TimeCircle.svg";
-import { Loader } from "../../components";
-import "./singleVideo.css";
-import { useVideos } from "../../context";
+import { ReactComponent as CloseIcon } from "../../assets/Close.svg";
+
 import { isPresent } from "../../utils";
+import { Modal, Playlist } from "../../components";
+
 export const SingleVideo = () => {
   const { videoId } = useParams();
 
@@ -17,17 +24,32 @@ export const SingleVideo = () => {
     videoState: { likes, watchLater },
   } = useVideos();
 
-  const [singleVideo, Loading] = useAxios({
+  const {
+    authState: { token },
+  } = useAuth();
+
+  const [singleVideo] = useAxios({
     method: "get",
     url: `/api/video/${videoId}`,
     property: "video",
   });
 
   const [handlers] = useHandler();
+
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isVideoInLike = isPresent(likes, videoId);
   const isVideoInWatchLater = isPresent(watchLater, videoId);
+
+  const [modal, setModal] = useState();
+
+  const openModal = () => {
+    if (token) setModal(!modal);
+    else {
+      navigate("/login", { state: { location } });
+    }
+  };
 
   return (
     <div className='main-container'>
@@ -70,8 +92,8 @@ export const SingleVideo = () => {
                   </p>
                 </div>
                 <div className='btn-wrapper flex-col ai-center jc-center'>
-                  <button className='btn btn-icon '>
-                    <Playlist width='30px' height='30px' />
+                  <button onClick={openModal} className='btn btn-icon '>
+                    <PlaylistIcon width='30px' height='30px' />
                   </button>
                   <p className='btn-title'>Save</p>
                 </div>
@@ -109,8 +131,23 @@ export const SingleVideo = () => {
             </div>
           </>
         )}
-        {Loading && <Loader />}
       </div>
+      {modal && (
+        <Modal setState={setModal}>
+          <div className='playlist-modal card-container '>
+            <div className='card-head'>
+              <b>Save to</b>
+              <button className='close-modal' onClick={openModal}>
+                <CloseIcon fill='rgb(63, 63, 63)' />
+              </button>
+            </div>
+            <div className='card-divider'></div>
+            <div className='card-content flex flex-gap flex-col'>
+              <Playlist video={singleVideo} />
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

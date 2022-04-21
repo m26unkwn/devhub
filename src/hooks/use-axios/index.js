@@ -1,37 +1,69 @@
 /** @format */
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useToast } from "../../context";
+import { useToast, useVideos } from "../../context";
 
 /** @format */
 export const useAxios = ({
   method = "get",
   url,
   property = null,
-  body = null,
   headers = null,
+  body = null,
 }) => {
   const [response, setResponse] = useState();
-  const [error, setError] = useState("");
   const { setLoading } = useToast();
+  const [error, setError] = useState("");
 
   useEffect(() => {
     (async function () {
       try {
         setLoading(true);
         const { data } = await axios({ method, url, body, headers });
+        console.log(data);
         setResponse(property ? data[property] : data);
         setLoading(false);
       } catch (error) {
         setError(error);
-        setLoading(false);
       }
     })();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [method, url, property, headers, body]);
+  }, []);
+
+  return [response, error];
+};
+
+export const usePlaylistAxios = ({
+  method = "get",
+  url,
+  property = null,
+  headers = null,
+  body = null,
+}) => {
+  const [response, setResponse] = useState();
+  const { setLoading } = useToast();
+  const [error, setError] = useState("");
+  const {
+    videoState: { playlists },
+  } = useVideos();
+
+  useEffect(() => {
+    (async function () {
+      try {
+        setLoading(true);
+        const { data } = await axios({ method, url, body, headers });
+        console.log(data);
+        setResponse(property ? data[property] : data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+      }
+    })();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playlists]);
 
   return [response, error];
 };

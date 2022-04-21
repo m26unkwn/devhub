@@ -5,7 +5,7 @@ import { videoReducer } from "../reducer/video-reducer";
 
 const VideoContext = createContext();
 
-let intialVideoState = {
+const intialVideoState = {
   videos: [],
   filters: "",
   playlists: [],

@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as MenuIcon } from "../../../assets/ElipsesIcon.svg";
 import { Modal } from "../../Modal/Modal";
 import { useAuth } from "../../../context";
-import { PlaylistModal } from "../../ActionModal/PlaylistModal";
+import { PlaylistModal } from "../../ActionModal/ActionModal";
 
 export const VideoCard = ({ props }) => {
   const [modal, setModal] = useState();
