@@ -26,7 +26,13 @@ export const CreatePlaylist = ({ closeModal, setModal }) => {
 
   return (
     <div className='input-field create-playlist'>
-      <input type='text' value={playlist.title} onChange={onCreatePlaylist} />
+      <input
+        type='text'
+        autoFocus
+        value={playlist.title}
+        placeholder='Enter Playlist'
+        onChange={onCreatePlaylist}
+      />
       <button
         disabled={!playlist.title.trim("")}
         onClick={createThePlaylist}
