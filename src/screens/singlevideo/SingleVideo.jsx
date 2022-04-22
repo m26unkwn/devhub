@@ -118,11 +118,7 @@ export const SingleVideo = () => {
               </div>
               <div className='video-creator flex  ai-center flex-gap'>
                 <Link to={`/channel/${singleVideo.creator}`}>
-                  <img
-                    className='avatar'
-                    src={singleVideo.creatorProfile}
-                    alt='profile'
-                  />
+                  <span className='avatar'>{singleVideo.creator[0]}</span>
                 </Link>
                 <Link to={`/channel/${singleVideo.creator}`}>
                   <h4>{singleVideo.creator}</h4>
