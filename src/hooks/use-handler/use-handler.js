@@ -3,7 +3,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth, useToast, useVideos } from "../../context";
 import axios from "axios";
-import { useState } from "react";
 
 export const useHandler = () => {
   const { videoDispatch } = useVideos();
@@ -11,9 +10,8 @@ export const useHandler = () => {
     authState: { token },
   } = useAuth();
 
-  const { setToast } = useToast();
+  const { setToast, setLoading } = useToast();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
   // this function handle all the api calls
 
@@ -34,7 +32,6 @@ export const useHandler = () => {
         data: body,
         headers: headers,
       });
-      console.log("data coming from server", data);
       videoDispatch({ type, payload: data[property] });
       setToast({
         toastVarient: "success",
@@ -42,6 +39,9 @@ export const useHandler = () => {
         toast: true,
       });
       setLoading(false);
+      if (message === "PLAYLIST DELETED") {
+        navigate("/playlist");
+      }
     } catch (error) {
       setToast({
         toast: true,
@@ -145,6 +145,55 @@ export const useHandler = () => {
     );
   };
 
+  //playlistSection
+  const createPlaylist = (playlist) => {
+    token &&
+      serverCalls(
+        "post",
+        "/api/user/playlists",
+        "ADD_PLAYLIST",
+        "playlists",
+        "PLAYLIST CREATED.",
+        {
+          playlist: playlist,
+        }
+      );
+  };
+
+  const removePlaylist = (playlistId) => {
+    serverCalls(
+      "delete",
+      `/api/user/playlists/${playlistId}`,
+      "ADD_PLAYLIST",
+      "playlists",
+      "PLAYLIST DELETED"
+    );
+  };
+
+  const addVideoIntoPlaylist = (id, video) => {
+    token &&
+      serverCalls(
+        "post",
+        `/api/user/playlists/${id}`,
+        "ADD_VIDEO_INTO_PLAYLIST",
+        "playlist",
+        "Added to playlist.",
+        {
+          video: video,
+        }
+      );
+  };
+
+  const removeVideofromPlaylist = (playlistid, videoid) => {
+    serverCalls(
+      "delete",
+      `/api/user/playlists/${playlistid}/${videoid}`,
+      "ADD_VIDEO_INTO_PLAYLIST",
+      "playlist",
+      "REMOVE FROM PLAYLIST."
+    );
+  };
+
   const handlers = {
     addToLike,
     removeFromLike,
@@ -152,7 +201,11 @@ export const useHandler = () => {
     addToWatchLater,
     addToHistory,
     removeFromHistory,
+    createPlaylist,
+    removePlaylist,
+    addVideoIntoPlaylist,
+    removeVideofromPlaylist,
   };
 
-  return [loading, handlers];
+  return [handlers];
 };

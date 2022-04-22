@@ -10,7 +10,7 @@ export const History = () => {
     videoState: { history },
   } = useVideos();
 
-  const [loading, handlers] = useHandler();
+  const [handlers] = useHandler();
 
   return (
     <div className='main-container'>
@@ -24,7 +24,6 @@ export const History = () => {
                   key={video._id}
                   props={video}
                   removeHandler={handlers.removeFromHistory}
-                  loading={loading}
                 />
               ))}
             </div>
@@ -32,7 +31,7 @@ export const History = () => {
         ) : (
           <Hero
             className='background-color'
-            title="You don't have any Watch History"
+            title="You don't have any History"
           />
         )}
       </div>

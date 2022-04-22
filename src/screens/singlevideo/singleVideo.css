@@ -34,6 +34,9 @@
 .btn-title {
   text-align: center;
 }
+.video-creator {
+  margin-bottom: 1rem;
+}
 .video-creator > a {
   color: inherit;
   text-decoration: none;
@@ -45,12 +48,12 @@
   top: 50%;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 780px) {
   .video-player {
     height: 20rem;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   .video-player {
     height: 10rem;
   }

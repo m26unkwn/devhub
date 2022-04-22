@@ -18,8 +18,9 @@ import {
   SingleVideo,
   Signup,
   Login,
+  SinglePlaylist,
 } from "./screens";
-import { PrivateRoute, Toast } from "./components";
+import { PrivateRoute, Toast, Loader } from "./components";
 
 let videoConfig = {
   method: "get",
@@ -30,7 +31,7 @@ let videoConfig = {
 function App() {
   const { videoDispatch } = useVideos();
 
-  const { toast } = useToast();
+  const { toast, loading } = useToast();
 
   const [videos] = useAxios(videoConfig);
 
@@ -44,6 +45,7 @@ function App() {
     <div className='main-grid-container'>
       <Navbar />
       {toast.toast && <Toast />}
+      {loading && <Loader />}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/explore' element={<Explore />} />
@@ -57,6 +59,15 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path='/playlist/:playlistId'
+          element={
+            <PrivateRoute>
+              <SinglePlaylist />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path='/likedvedios'
           element={

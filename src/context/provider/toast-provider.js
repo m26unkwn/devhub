@@ -2,7 +2,7 @@
 
 import { createContext, useState, useContext } from "react";
 
-let Toast = createContext();
+const Toast = createContext();
 
 const ToastProvider = ({ children }) => {
   const [toast, setToast] = useState({
@@ -10,9 +10,13 @@ const ToastProvider = ({ children }) => {
     toastVarient: "",
     message: "",
   });
-  let value = {
+  const [loading, setLoading] = useState(false);
+
+  const value = {
     toast,
     setToast,
+    loading,
+    setLoading,
   };
   return <Toast.Provider value={value}>{children}</Toast.Provider>;
 };

@@ -17,3 +17,4 @@ export { default as MenuIcon } from "./ElipsesIcon.svg";
 export { default as Eye } from "./Eye.svg";
 export { default as DisableEye } from "./DisableEye.svg";
 export { default as Delete } from "./Delete.svg";
+export { default as Close } from "./Close.svg";

@@ -16,13 +16,17 @@
 .explore-category {
   margin-bottom: 2rem;
 }
-@media only screen and (max-width: 700px) {
-  .explore-category {
-    overflow-x: scroll;
+@media only screen and (max-width: 480px) {
+  .explore-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
   }
-}
-@media only screen and (max-width: 400px) {
   .explore-category {
-    overflow-x: scroll;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
   }
 }

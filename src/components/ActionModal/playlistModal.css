@@ -1,0 +1,17 @@
+/** @format */
+
+.card-content {
+  font-size: 1rem;
+}
+.input > input {
+  width: 1rem;
+  height: 1rem;
+}
+.create-playlist {
+  width: 100%;
+}
+.close-modal {
+  all: unset;
+  cursor: pointer;
+  fill: rgb(63, 63, 63);
+}

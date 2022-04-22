@@ -12,7 +12,16 @@ export const videoReducer = (state, action) => {
       return { ...state, watchLater: action.payload };
     case "ADD_VIDEO_INTO_HISTORY":
       return { ...state, history: action.payload };
-
+    case "ADD_PLAYLIST":
+      return { ...state, playlists: action.payload };
+    case "ADD_VIDEO_INTO_PLAYLIST":
+      const filterPlaylist = state.playlists.filter((playlist) => {
+        if (playlist._id === action.payload._id) {
+          playlist.videos = action.payload.videos;
+        }
+        return playlist;
+      });
+      return { ...state, playlists: filterPlaylist };
     default:
       return state;
   }

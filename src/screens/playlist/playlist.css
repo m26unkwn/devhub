@@ -1,0 +1,25 @@
+/** @format */
+
+.playlist-wrapper {
+  margin: 2rem;
+}
+.playlist-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.create-playlist-modal {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playlist-head > h1 {
+  color: var(--heading-text-color);
+}
+.no-playlist {
+  color: var(--heading-text-color);
+  width: 100%;
+}
