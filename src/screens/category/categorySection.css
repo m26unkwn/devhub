@@ -1,0 +1,9 @@
+/** @format */
+
+.category-container {
+  margin: 2rem;
+}
+.category-head {
+  margin-bottom: 2rem;
+  color: var(--heading-text-color);
+}

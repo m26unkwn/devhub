@@ -28,6 +28,12 @@ body {
   background: var(--bg-container-color);
 }
 
+.main-container {
+  grid-area: main;
+  background-color: var(--bg-container-color);
+  height: 100vh;
+}
+
 .main-grid-container {
   display: grid;
   grid-template-areas:

@@ -1,14 +1,17 @@
 /** @format */
 
 import React from "react";
-
 import "./category.css";
 
 import { CategoryCard } from "../../../components";
-
-import { Javascript, ReactLogo, CssLogo, HtmlLogo } from "../../../assets";
+import { useAxios } from "../../../hooks";
 
 export const Category = () => {
+  const [categories] = useAxios({
+    method: "get",
+    url: "/api/categories",
+  });
+
   return (
     <div className='category-wrapper'>
       <div className='category-title'>
@@ -16,14 +19,13 @@ export const Category = () => {
       </div>
       <div className='category-cards'>
         <div className='category-card-wrapper flex flex-gap flex-wrap'>
-          <CategoryCard
-            img={Javascript}
-            categoryName='Javascript'
-            link='javascript'
-          />
-          <CategoryCard img={ReactLogo} categoryName={"React"} link='react' />
-          <CategoryCard img={CssLogo} categoryName='Css' link='css' />
-          <CategoryCard img={HtmlLogo} categoryName='Html' link='html' />
+          {categories &&
+            categories.categories.map((category) => (
+              <CategoryCard
+                img={category.image}
+                categoryName={category.categoryName}
+              />
+            ))}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 /** @format */
 
 import { v4 as uuid } from "uuid";
+import { Javascript, ReactLogo, CssLogo, HtmlLogo } from "../../assets";
 
 /**
  * Category Database can be added here.
@@ -11,25 +12,21 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "React",
-    description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+    image: ReactLogo,
   },
   {
     _id: uuid(),
     categoryName: "Javascript",
-    description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+    image: Javascript,
   },
   {
     _id: uuid(),
     categoryName: "Html",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+    image: HtmlLogo,
   },
   {
     _id: uuid(),
     categoryName: "Css",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+    image: CssLogo,
   },
 ];

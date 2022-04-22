@@ -19,6 +19,7 @@ import {
   Signup,
   Login,
   SinglePlaylist,
+  Category,
 } from "./screens";
 import { PrivateRoute, Toast, Loader } from "./components";
 
@@ -48,6 +49,7 @@ function App() {
       {loading && <Loader />}
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/category/:categoryName' element={<Category />} />
         <Route path='/explore' element={<Explore />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
