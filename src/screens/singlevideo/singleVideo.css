@@ -1,9 +1,5 @@
 /** @format */
 
-.main-container {
-  grid-area: main;
-  background-color: var(--bg-container-color);
-}
 .video-wrapper {
   margin: 2rem;
   width: 90%;

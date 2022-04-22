@@ -11,3 +11,4 @@ export { WatchLater } from "./watchlater/WatchLater";
 export { SingleVideo } from "./singlevideo/SingleVideo";
 export { Signup, Login } from "./auth";
 export { SinglePlaylist } from "./playlist/singlePlaylist/SinglePlaylist";
+export { Category } from "./category/Category";
