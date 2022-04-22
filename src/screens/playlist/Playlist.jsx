@@ -14,7 +14,6 @@ export const Playlist = () => {
   const openModal = () => {
     setModal(!modal);
   };
-  console.log("hello");
   return (
     <div className='main-container'>
       <div className='playlist-wrapper'>

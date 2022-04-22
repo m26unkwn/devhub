@@ -54,7 +54,6 @@ export const usePlaylistAxios = ({
       try {
         setLoading(true);
         const { data } = await axios({ method, url, body, headers });
-        console.log(data);
         setResponse(property ? data[property] : data);
         setLoading(false);
       } catch (error) {

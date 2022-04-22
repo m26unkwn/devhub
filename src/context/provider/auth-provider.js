@@ -7,7 +7,7 @@ import { useVideos } from "./video-provider";
 
 const AuthContext = createContext();
 
-let initialAuthState = {
+const initialAuthState = {
   token: "",
   userDetails: "",
   authError: {
