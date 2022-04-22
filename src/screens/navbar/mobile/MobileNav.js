@@ -4,14 +4,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import {
-  Logo,
   Home,
   Explore,
   Playlist,
   Like,
   WatchLater,
   History,
-  Profile,
 } from "../../../assets";
 
 import "./mobile.css";
