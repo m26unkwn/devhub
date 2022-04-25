@@ -4,13 +4,15 @@ import React from "react";
 
 export const WatchLater = ({ videoPresent, handleWatchlater }) => {
   return (
-    <div className=' input flex flex-gap ai-center'>
-      <input
-        type='checkbox'
-        checked={videoPresent}
-        onChange={handleWatchlater}
-      />
-      <label>Watch Later</label>
+    <div className='  flex flex-gap ai-center'>
+      <label className='input'>
+        <input
+          type='checkbox'
+          checked={videoPresent}
+          onChange={handleWatchlater}
+        />
+        <span> Watch Later</span>
+      </label>
     </div>
   );
 };

@@ -16,7 +16,7 @@ export const Card = ({ props, loading, removeHandler, playlistId }) => {
         </Link>
       </div>
       <div className='all-card-content flex   flex-gap flex-col'>
-        <div className='all-card-title'>
+        <div title={title} className='all-card-title'>
           <Link to={`/explore/${_id}`}>{title}</Link>
         </div>
         <p className='card-desc'>{category}</p>

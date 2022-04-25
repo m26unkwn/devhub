@@ -32,7 +32,7 @@ export const VideoCard = ({ props }) => {
         </Link>
       </div>
       <div className='video-card-content flex ai-center flex-gap'>
-        <div className='video-card-title'>
+        <div title={title} className='video-card-title'>
           <Link to={`/explore/${_id}`}>{title}</Link>
         </div>
         <div className='video-card-action '>

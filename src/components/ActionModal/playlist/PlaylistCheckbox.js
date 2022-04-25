@@ -18,12 +18,14 @@ export const PlaylistCheckbox = ({ playlist, video }) => {
   };
   return (
     <div className='input flex flex-gap ai-center'>
-      <input
-        type='checkbox'
-        checked={isVideoPresent}
-        onChange={handlePlaylist}
-      />
-      <label>{playlist.title}</label>
+      <label className='input'>
+        <input
+          type='checkbox'
+          checked={isVideoPresent}
+          onChange={handlePlaylist}
+        />
+        <span> {playlist.title}</span>
+      </label>
     </div>
   );
 };

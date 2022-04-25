@@ -1,15 +1,23 @@
 /** @format */
 
 .video-card {
+  position: relative;
   width: 20rem;
   height: auto;
   background-color: var(--bg-color);
+}
+.video-modal {
+  position: absolute;
+  top: 50%;
+  z-index: 99;
 }
 .video-card-content {
   padding: 1rem;
 }
 .video-thumbnail > a > img {
   border-radius: 10px 10px 0 0;
+  aspect-ratio: 2/1;
+  object-fit: cover;
 }
 .video-card-title {
   white-space: nowrap;

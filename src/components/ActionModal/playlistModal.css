@@ -3,9 +3,15 @@
 .card-content {
   font-size: 1rem;
 }
+.input {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 .input > input {
   width: 1rem;
   height: 1rem;
+  margin-left: 1rem;
 }
 .create-playlist {
   width: 100%;
