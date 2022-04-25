@@ -22,6 +22,8 @@ export const Category = () => {
           {categories &&
             categories.categories.map((category) => (
               <CategoryCard
+
+              key={category._id}
                 img={category.image}
                 categoryName={category.categoryName}
               />
