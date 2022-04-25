@@ -111,9 +111,9 @@ export const Signup = () => {
                   Sign Up
                 </button>
               </div>
-              {authError && (
+              {authError.signup && (
                 <div style={{ padding: " 1rem 0" }}>
-                  <h4 className='error-color'>{authError}!</h4>
+                  <h4 className='error-color'>{authError.signup}!</h4>
                 </div>
               )}
               <div className='head-desc flex flex-row jc-start auth-action flex-gap'>
