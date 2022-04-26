@@ -7,6 +7,7 @@ import { CategoryCard } from "../../../components";
 import { useAxios } from "../../../hooks";
 
 export const Category = () => {
+
   const [categories] = useAxios({
     method: "get",
     url: "/api/categories",
