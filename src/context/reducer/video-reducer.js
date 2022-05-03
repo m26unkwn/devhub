@@ -22,6 +22,15 @@ export const videoReducer = (state, action) => {
         return playlist;
       });
       return { ...state, playlists: filterPlaylist };
+    case "CLEAR_ALL_DATA_FROM_STATE":
+      return {
+        videos: [],
+        filters: "",
+        playlists: [],
+        likes: [],
+        watchLater: [],
+        history: [],
+      };
     default:
       return state;
   }
