@@ -18,8 +18,12 @@ export default function authReducer(state, action) {
       };
     case "LOGOUT_USER":
       return {
-        ...state,
         token: "",
+        userDetails: "",
+        authError: {
+          login: "",
+          signup: "",
+        },
       };
     default:
       return state;

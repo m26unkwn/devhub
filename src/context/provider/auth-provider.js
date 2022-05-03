@@ -147,9 +147,23 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const logoutUser = (e, navigate) => {
+    e.preventDefault();
+    authDispatch({ type: "LOGOUT_USER" });
+    videoDispatch({ type: "CLEAR_ALL_DATA_FROM_STATE" });
+    localStorage.removeItem("userData");
+    navigate("/");
+  };
+
   return (
     <AuthContext.Provider
-      value={{ getUserLogin, getUserSignUp, authState, authDispatch }}>
+      value={{
+        getUserLogin,
+        logoutUser,
+        getUserSignUp,
+        authState,
+        authDispatch,
+      }}>
       {children}
     </AuthContext.Provider>
   );
