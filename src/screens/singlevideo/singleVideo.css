@@ -3,6 +3,7 @@
 .video-wrapper {
   margin: 2rem;
   width: 90%;
+  padding-bottom: 2rem;
 }
 .video-player {
   height: 30rem;
