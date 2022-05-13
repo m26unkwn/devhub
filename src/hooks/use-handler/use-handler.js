@@ -21,7 +21,7 @@ export const useHandler = () => {
     type,
     property,
     message,
-    body = null
+    body = null,
   ) => {
     const headers = { authorization: token };
     try {
@@ -66,9 +66,9 @@ export const useHandler = () => {
           "Added To Likes.",
           {
             video,
-          }
+          },
         )
-      : navigate("/login", { state: { location } });
+      : navigate("/login", { state: { location: location } });
   };
 
   // this is add to unlike handler.
@@ -80,7 +80,7 @@ export const useHandler = () => {
       `/api/user/likes/${id}`,
       "ADD_VIDEO_INTO_LIKES",
       "likes",
-      "Removed from like video."
+      "Removed from like video.",
     );
   };
 
@@ -97,9 +97,9 @@ export const useHandler = () => {
           "Added To Watch Later.",
           {
             video,
-          }
+          },
         )
-      : navigate("/login", { state: { location } });
+      : navigate("/login", { state: { location: location } });
   };
 
   // this is remove watch later handler.
@@ -111,7 +111,7 @@ export const useHandler = () => {
       `/api/user/watchlater/${id}`,
       "ADD_VIDEO_INTO_WATCH_LATER",
       "watchlater",
-      "Removed from Watch Later."
+      "Removed from Watch Later.",
     );
   };
 
@@ -128,7 +128,7 @@ export const useHandler = () => {
         "Added To History.",
         {
           video,
-        }
+        },
       );
   };
 
@@ -141,7 +141,7 @@ export const useHandler = () => {
       `/api/user/history/${id}`,
       "ADD_VIDEO_INTO_HISTORY",
       "history",
-      "Removed from History."
+      "Removed from History.",
     );
   };
 
@@ -156,7 +156,7 @@ export const useHandler = () => {
         "PLAYLIST CREATED.",
         {
           playlist: playlist,
-        }
+        },
       );
   };
 
@@ -166,7 +166,7 @@ export const useHandler = () => {
       `/api/user/playlists/${playlistId}`,
       "ADD_PLAYLIST",
       "playlists",
-      "PLAYLIST DELETED"
+      "PLAYLIST DELETED",
     );
   };
 
@@ -180,7 +180,7 @@ export const useHandler = () => {
         "Added to playlist.",
         {
           video: video,
-        }
+        },
       );
   };
 
@@ -190,7 +190,7 @@ export const useHandler = () => {
       `/api/user/playlists/${playlistid}/${videoid}`,
       "ADD_VIDEO_INTO_PLAYLIST",
       "playlist",
-      "REMOVE FROM PLAYLIST."
+      "REMOVE FROM PLAYLIST.",
     );
   };
 
