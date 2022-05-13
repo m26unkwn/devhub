@@ -15,8 +15,8 @@
   display: block;
   position: absolute;
 
-  width: 34px;
-  height: 34px;
+  width: 64px;
+  height: 64px;
   margin: 8px;
   border: 8px solid var(--primary-color);
   border-radius: 50%;
