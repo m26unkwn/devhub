@@ -7,7 +7,12 @@ import App from "./App";
 import { makeServer } from "./server";
 
 import { BrowserRouter as Router } from "react-router-dom";
-import { VideoProvider, AuthProvider, ToastProvider } from "./context";
+import {
+  VideoProvider,
+  AuthProvider,
+  ToastProvider,
+  ScrollToTopProvider,
+} from "./context";
 
 // Call make Server
 makeServer();
@@ -18,11 +23,13 @@ ReactDOM.render(
       <VideoProvider>
         <AuthProvider>
           <ToastProvider>
-            <App />
+            <ScrollToTopProvider>
+              <App />
+            </ScrollToTopProvider>
           </ToastProvider>
         </AuthProvider>
       </VideoProvider>
     </Router>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
