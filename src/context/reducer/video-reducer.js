@@ -24,7 +24,7 @@ export const videoReducer = (state, action) => {
       return { ...state, playlists: filterPlaylist };
     case "CLEAR_ALL_DATA_FROM_STATE":
       return {
-        videos: [],
+        ...state,
         filters: "",
         playlists: [],
         likes: [],
