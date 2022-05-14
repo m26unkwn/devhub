@@ -16,3 +16,10 @@
 .video-card-wrapper {
   margin-top: 2rem;
 }
+.clear {
+  margin-top: 1rem;
+}
+.clear > button {
+  background-color: var(--bg-btn-signup-color);
+  color: var(--heading-text-color);
+}

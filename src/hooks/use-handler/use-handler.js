@@ -145,6 +145,16 @@ export const useHandler = () => {
     );
   };
 
+  const clearAllHistory = () => {
+    serverCalls(
+      "DELETE",
+      `/api/user/history/all`,
+      "ADD_VIDEO_INTO_HISTORY",
+      "history",
+      "Cleared All History.",
+    );
+  };
+
   //playlistSection
   const createPlaylist = (playlist) => {
     token &&
@@ -205,6 +215,7 @@ export const useHandler = () => {
     removePlaylist,
     addVideoIntoPlaylist,
     removeVideofromPlaylist,
+    clearAllHistory,
   };
 
   return [handlers];

@@ -1,6 +1,6 @@
 /** @format */
 
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
 import { useToast, useVideos } from "./context";

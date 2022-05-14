@@ -18,6 +18,12 @@ export const History = () => {
         {history && history.length > 0 ? (
           <>
             <Hero className='background-color' title='History' />
+            <div className='clear flex jc-end'>
+              <button onClick={handlers.clearAllHistory} className='btn'>
+                Clear History
+              </button>
+            </div>
+
             <div className='video-card-wrapper flex flex-col flex-gap'>
               {history.map((video) => (
                 <Card
