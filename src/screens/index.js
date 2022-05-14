@@ -14,3 +14,4 @@ export { Signup } from "./auth/signup/Signup";
 export { SinglePlaylist } from "./playlist/singlePlaylist/SinglePlaylist";
 export { Category } from "./category/Category";
 export { SearchVideos } from "./searchvideos";
+export { RouteError } from "./error/Error";

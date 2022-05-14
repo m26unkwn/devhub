@@ -1,6 +1,6 @@
 /** @format */
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
 import { useToast, useVideos } from "./context";
@@ -21,6 +21,7 @@ import {
   SinglePlaylist,
   Category,
   SearchVideos,
+  RouteError,
 } from "./screens";
 import { PrivateRoute, Toast, Loader } from "./components";
 
@@ -55,6 +56,8 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/explore/search' element={<SearchVideos />} />
+        <Route path='/explore/:videoId' element={<SingleVideo />} />
+        <Route path='*' element={<RouteError />} />
         <Route
           path='/playlist'
           element={
@@ -104,7 +107,6 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path='/explore/:videoId' element={<SingleVideo />} />
       </Routes>
     </div>
   );
