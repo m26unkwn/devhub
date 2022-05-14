@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../../context";
 import "./header.css";
 import { Logo, Profile } from "../../../assets";
+import SearchBar from "../../../components/SearchBar/Searchbar";
 
 export const Header = () => {
   const {
@@ -18,9 +19,7 @@ export const Header = () => {
         </NavLink>
         <h1 className='sidebar-logo'>DevHub</h1>
       </div>
-      <div className='input-field search-bar '>
-        <input placeholder='Search products' required type='search' />
-      </div>
+      <SearchBar />
       {!token ? (
         <div className='auth-action-wrapper flex jc-between'>
           <Link to='/login' className='btn  login-btn'>

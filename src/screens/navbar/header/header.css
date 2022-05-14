@@ -19,6 +19,11 @@
   flex-direction: row;
   position: relative;
 }
+.search-bar-icon {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
 
 .search-bar > input {
   background-color: var(--bg-input-color);
