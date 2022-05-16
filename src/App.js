@@ -22,6 +22,7 @@ import {
   Category,
   SearchVideos,
   RouteError,
+  CreatorPage,
 } from "./screens";
 import { PrivateRoute, Toast, Loader } from "./components";
 
@@ -57,6 +58,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/explore/search' element={<SearchVideos />} />
         <Route path='/explore/:videoId' element={<SingleVideo />} />
+        <Route path='/channel/:creatorId' element={<CreatorPage />} />
         <Route path='*' element={<RouteError />} />
         <Route
           path='/playlist'

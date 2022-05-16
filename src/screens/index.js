@@ -15,3 +15,4 @@ export { SinglePlaylist } from "./playlist/singlePlaylist/SinglePlaylist";
 export { Category } from "./category/Category";
 export { SearchVideos } from "./searchvideos";
 export { RouteError } from "./error/Error";
+export { CreatorPage } from "./creatorpage/CreatorPage";

@@ -21,16 +21,18 @@ export const Card = ({ props, loading, removeHandler, playlistId }) => {
         </div>
         <p className='card-desc'>{category}</p>
       </div>
-      <div className='all-card-action '>
-        <button
-          disabled={loading}
-          onClick={() =>
-            playlistId ? removeHandler(playlistId, _id) : removeHandler(_id)
-          }
-          className='btn btn-icon'>
-          <Delete />
-        </button>
-      </div>
+      {removeHandler && (
+        <div className='all-card-action '>
+          <button
+            disabled={loading}
+            onClick={() =>
+              playlistId ? removeHandler(playlistId, _id) : removeHandler(_id)
+            }
+            className='btn btn-icon'>
+            <Delete />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
