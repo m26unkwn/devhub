@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer, useContext, useEffect } from "react";
 import authReducer from "../reducer/auth-reducer";
 import { useVideos } from "./video-provider";
 
@@ -16,9 +16,50 @@ const initialAuthState = {
   },
 };
 
+// to check if user is reloading the page
+
+let userData = JSON.parse(localStorage.getItem("userData"));
+
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialAuthState);
   const { videoDispatch } = useVideos();
+
+  useEffect(
+    () => {
+      if (userData) {
+        authDispatch({
+          type: "ADD_TOKEN",
+          payload: userData.token,
+        });
+        authDispatch({
+          type: "ADD_USER_DATA",
+          payload: {
+            firstName: userData.foundUser.firstName,
+            email: userData.foundUser.email,
+            lastName: userData.foundUser.lastName,
+          },
+        });
+        videoDispatch({
+          type: "ADD_VIDEO_INTO_LIKES",
+          payload: userData.foundUser.likes,
+        });
+        videoDispatch({
+          type: "ADD_VIDEO_INTO_HISTORY",
+          payload: userData.foundUser.history,
+        });
+        videoDispatch({
+          type: "ADD_VIDEO_INTO_PLAYLIST",
+          payload: userData.foundUser.playlist,
+        });
+        videoDispatch({
+          type: "ADD_VIDEO_INTO_WATCH_LATER",
+          payload: userData.foundUser.watchlater,
+        });
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
   const getUserLogin = async (email, password) => {
     try {
@@ -34,7 +75,7 @@ const AuthProvider = ({ children }) => {
         JSON.stringify({
           token: encodedToken,
           foundUser: foundUser,
-        })
+        }),
       );
 
       authDispatch({
@@ -105,7 +146,7 @@ const AuthProvider = ({ children }) => {
         JSON.stringify({
           token: encodedToken,
           foundUser: createdUser,
-        })
+        }),
       );
       authDispatch({
         type: "ADD_TOKEN",

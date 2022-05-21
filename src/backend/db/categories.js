@@ -1,6 +1,5 @@
 /** @format */
 
-import { v4 as uuid } from "uuid";
 import { Javascript, ReactLogo, CssLogo, HtmlLogo } from "../../assets";
 
 /**
@@ -10,22 +9,18 @@ import { Javascript, ReactLogo, CssLogo, HtmlLogo } from "../../assets";
 
 export const categories = [
   {
-    _id: uuid(),
     categoryName: "React",
     image: ReactLogo,
   },
   {
-    _id: uuid(),
     categoryName: "Javascript",
     image: Javascript,
   },
   {
-    _id: uuid(),
     categoryName: "Html",
     image: HtmlLogo,
   },
   {
-    _id: uuid(),
     categoryName: "Css",
     image: CssLogo,
   },
