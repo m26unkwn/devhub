@@ -16,7 +16,7 @@ export const WatchLater = () => {
   return (
     <div className='main-container'>
       <div className='watchlater-wrapper'>
-        {watchLater.length > 0 ? (
+        {watchLater?.length > 0 ? (
           <>
             <Hero
               className='background-color'

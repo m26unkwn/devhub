@@ -42,6 +42,9 @@ export const useHandler = () => {
       if (message === "PLAYLIST DELETED") {
         navigate("/playlist");
       }
+      if (type === "ADD_PLAYLIST") {
+        return data;
+      }
     } catch (error) {
       setToast({
         toast: true,
@@ -180,18 +183,20 @@ export const useHandler = () => {
         },
       );
   };
-  const createPlaylist = (playlist) => {
-    token &&
-      serverCalls(
-        "post",
-        "/api/user/playlists",
-        "ADD_PLAYLIST",
-        "playlists",
-        "PLAYLIST CREATED.",
-        {
-          playlist: playlist,
-        },
-      );
+  const createPlaylist = async (playlist, video) => {
+    let playListId = playlist.id;
+    let result = await serverCalls(
+      "post",
+      "/api/user/playlists",
+      "ADD_PLAYLIST",
+      "playlists",
+      "PLAYLIST CREATED.",
+      {
+        playlist: playlist,
+      },
+    );
+    const id = result.playlists.find((playlist) => playlist.id === playListId);
+    addVideoIntoPlaylist(id._id, video);
   };
 
   const removeVideofromPlaylist = (playlistid, videoid) => {

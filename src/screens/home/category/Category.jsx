@@ -22,7 +22,7 @@ export const Category = () => {
           {categories &&
             categories.categories.map((category) => (
               <CategoryCard
-                key={category._id}
+                key={category.categoryName}
                 img={category.image}
                 categoryName={category.categoryName}
               />

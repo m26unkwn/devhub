@@ -59,7 +59,7 @@ export const Explore = () => {
         <div className='explore-card-wrapper'>
           {filteredVideos.length > 0 ? (
             filteredVideos.map((video) => (
-              <VideoCard key={video.id} props={video} />
+              <VideoCard key={video._id} props={video} />
             ))
           ) : (
             <p>Loading</p>
