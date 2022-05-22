@@ -8,7 +8,7 @@ Devhub is a Video Library App, where users can play binge-watch videos related t
 
 ## Live App link
 
-- [Magnificent Play](https://devvhub.netlify.app/)
+- [Devhub](https://devvhub.netlify.app/)
 
 ## Technologies used
 
