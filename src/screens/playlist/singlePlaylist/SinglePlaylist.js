@@ -2,15 +2,14 @@
 
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useAuth } from "../../../context";
 import { Card } from "../../../components";
 import { usePlaylistAxios, useHandler } from "../../../hooks";
+import { useSelector } from "react-redux";
 
 export const SinglePlaylist = () => {
   const { playlistId } = useParams();
-  const {
-    authState: { token },
-  } = useAuth();
+
+  const token = useSelector((store) => store.auth.token);
 
   const [handlers] = useHandler();
 

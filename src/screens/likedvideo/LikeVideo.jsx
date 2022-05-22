@@ -1,15 +1,13 @@
 /** @format */
 
 import React from "react";
+import { useSelector } from "react-redux";
 import { Card, Hero } from "../../components";
-import { useVideos } from "../../context";
 import { useHandler } from "../../hooks";
 import "./likevideo.css";
 
 export const LikeVideo = () => {
-  const {
-    videoState: { likes },
-  } = useVideos();
+  const likes = useSelector((store) => store.videos.likes);
 
   const [{ removeFromLike }] = useHandler();
 

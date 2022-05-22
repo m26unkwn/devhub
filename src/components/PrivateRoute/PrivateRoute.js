@@ -1,13 +1,11 @@
 /** @format */
 
 import React from "react";
+import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/provider/auth-provider";
 
 export const PrivateRoute = ({ children }) => {
-  const {
-    authState: { token },
-  } = useAuth();
+  const token = useSelector((store) => store.auth.token);
   const location = useLocation();
   return token ? (
     children

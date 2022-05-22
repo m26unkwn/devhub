@@ -1,21 +1,20 @@
 /** @format */
 
 import React from "react";
-import { useVideos } from "../../context";
 import { Hero, Card } from "../../components";
 import { useHandler } from "../../hooks";
+import { useSelector } from "react-redux";
 
 export const History = () => {
-  const {
-    videoState: { history },
-  } = useVideos();
+  const history = useSelector((store) => store.videos.history);
+  console.log(history);
 
   const [handlers] = useHandler();
 
   return (
     <div className='main-container'>
       <div className='watchlater-wrapper'>
-        {history && history.length > 0 ? (
+        {history?.length > 0 ? (
           <>
             <Hero className='background-color' title='History' />
             <div className='clear flex jc-end'>

@@ -3,14 +3,12 @@
 import React, { useState } from "react";
 import { PlaylistCard, CreatePlaylist, Modal } from "../../components";
 import "./playlist.css";
-import { useVideos } from "../../context";
+import { useSelector } from "react-redux";
 
 export const Playlist = () => {
   const [modal, setModal] = useState();
-  const {
-    videoState: { playlists },
-  } = useVideos();
 
+  const playlists = useSelector((store) => store.playlist);
   const openModal = () => {
     setModal(!modal);
   };

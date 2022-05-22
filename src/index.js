@@ -5,14 +5,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
+import { Provider } from "react-redux";
+import { store } from "./store/index";
 
 import { BrowserRouter as Router } from "react-router-dom";
-import {
-  VideoProvider,
-  AuthProvider,
-  ToastProvider,
-  ScrollToTopProvider,
-} from "./context";
+import { ToastProvider, ScrollToTopProvider } from "./context";
 
 // Call make Server
 makeServer();
@@ -20,15 +17,13 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <VideoProvider>
-        <AuthProvider>
-          <ToastProvider>
-            <ScrollToTopProvider>
-              <App />
-            </ScrollToTopProvider>
-          </ToastProvider>
-        </AuthProvider>
-      </VideoProvider>
+      <ToastProvider>
+        <ScrollToTopProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </ScrollToTopProvider>
+      </ToastProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root"),

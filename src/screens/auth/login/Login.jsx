@@ -3,18 +3,18 @@
 import React, { useReducer } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 
-import { useAuth } from "../../../context";
 import { loginReducer, loginInitialData, loginValidation } from "../utils";
 import { Input } from "../../../components";
 import "../auth.css";
+import { useSelector } from "react-redux";
+import { useHandler } from "../../../hooks";
 
 export const Login = () => {
   const [loginState, dispatch] = useReducer(loginReducer, loginInitialData);
 
-  const {
-    authState: { token, authError },
-    getUserLogin,
-  } = useAuth();
+  const [{ getUserLogin }] = useHandler();
+
+  const { token, authError } = useSelector((store) => store.auth);
 
   let location = useLocation();
   let lastLocation =

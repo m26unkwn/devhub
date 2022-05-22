@@ -1,15 +1,13 @@
 /** @format */
 
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context";
+import { useHandler } from "../../hooks";
 import "./profile.css";
 
 export const Profile = () => {
-  const {
-    authState: { userDetails },
-    logoutUser,
-  } = useAuth();
-
+  const userDetails = useSelector((store) => store.auth.userDetails);
+  const [{ logoutUser }] = useHandler();
   const navigate = useNavigate();
 
   return (

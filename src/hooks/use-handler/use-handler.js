@@ -1,24 +1,26 @@
 /** @format */
 
 import { useNavigate } from "react-router-dom";
-import { useAuth, useToast, useVideos } from "../../context";
+import { useToast } from "../../context";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { authAction } from "../../store/auth-slice";
+import { videoAction } from "../../store/video-slice";
+import { playlistAction } from "../../store/playlist-slice";
 
 export const useHandler = () => {
-  const { videoDispatch } = useVideos();
-  const {
-    authState: { token },
-  } = useAuth();
+  const token = useSelector((store) => store.auth.token);
 
   const { setToast, setLoading } = useToast();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // this function handle all the api calls
 
   const serverCalls = async (
     method,
     url,
-    type,
+    action,
     property,
     message,
     body = null,
@@ -32,7 +34,7 @@ export const useHandler = () => {
         data: body,
         headers: headers,
       });
-      videoDispatch({ type, payload: data[property] });
+      dispatch(action(data[property]));
       setToast({
         toastVarient: "success",
         message: message,
@@ -42,7 +44,7 @@ export const useHandler = () => {
       if (message === "PLAYLIST DELETED") {
         navigate("/playlist");
       }
-      if (type === "ADD_PLAYLIST") {
+      if (url === "/api/user/playlists") {
         return data;
       }
     } catch (error) {
@@ -64,7 +66,7 @@ export const useHandler = () => {
       ? serverCalls(
           "post",
           "/api/user/likes",
-          "ADD_VIDEO_INTO_LIKES",
+          videoAction.addToLike,
           "likes",
           "Added To Likes.",
           {
@@ -81,7 +83,7 @@ export const useHandler = () => {
     serverCalls(
       "DELETE",
       `/api/user/likes/${id}`,
-      "ADD_VIDEO_INTO_LIKES",
+      videoAction.addToLike,
       "likes",
       "Removed from like video.",
     );
@@ -95,7 +97,7 @@ export const useHandler = () => {
       ? serverCalls(
           "post",
           "/api/user/watchlater",
-          "ADD_VIDEO_INTO_WATCH_LATER",
+          videoAction.addToWatchLater,
           "watchlater",
           "Added To Watch Later.",
           {
@@ -112,7 +114,7 @@ export const useHandler = () => {
     serverCalls(
       "DELETE",
       `/api/user/watchlater/${id}`,
-      "ADD_VIDEO_INTO_WATCH_LATER",
+      videoAction.addToWatchLater,
       "watchlater",
       "Removed from Watch Later.",
     );
@@ -126,7 +128,7 @@ export const useHandler = () => {
       serverCalls(
         "post",
         "/api/user/history",
-        "ADD_VIDEO_INTO_HISTORY",
+        videoAction.addToHistory,
         "history",
         "Added To History.",
         {
@@ -142,7 +144,7 @@ export const useHandler = () => {
     serverCalls(
       "DELETE",
       `/api/user/history/${id}`,
-      "ADD_VIDEO_INTO_HISTORY",
+      videoAction.addToHistory,
       "history",
       "Removed from History.",
     );
@@ -152,7 +154,7 @@ export const useHandler = () => {
     serverCalls(
       "DELETE",
       `/api/user/history/all`,
-      "ADD_VIDEO_INTO_HISTORY",
+      videoAction.addToHistory,
       "history",
       "Cleared All History.",
     );
@@ -164,7 +166,7 @@ export const useHandler = () => {
     serverCalls(
       "delete",
       `/api/user/playlists/${playlistId}`,
-      "ADD_PLAYLIST",
+      playlistAction.addPlaylist,
       "playlists",
       "PLAYLIST DELETED",
     );
@@ -175,7 +177,7 @@ export const useHandler = () => {
       serverCalls(
         "post",
         `/api/user/playlists/${id}`,
-        "ADD_VIDEO_INTO_PLAYLIST",
+        playlistAction.addVideoIntoPlaylist,
         "playlist",
         "Added to playlist.",
         {
@@ -188,7 +190,7 @@ export const useHandler = () => {
     let result = await serverCalls(
       "post",
       "/api/user/playlists",
-      "ADD_PLAYLIST",
+      playlistAction.addPlaylist,
       "playlists",
       "PLAYLIST CREATED.",
       {
@@ -203,10 +205,119 @@ export const useHandler = () => {
     serverCalls(
       "delete",
       `/api/user/playlists/${playlistid}/${videoid}`,
-      "ADD_VIDEO_INTO_PLAYLIST",
+      playlistAction.addVideoIntoPlaylist,
       "playlist",
       "REMOVE FROM PLAYLIST.",
     );
+  };
+
+  // userLogin
+
+  const getUserLogin = async (email, password) => {
+    try {
+      let {
+        data: { encodedToken, foundUser },
+      } = await axios({
+        method: "post",
+        url: "/api/auth/login",
+        data: { email, password },
+      });
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          token: encodedToken,
+          foundUser: foundUser,
+        }),
+      );
+
+      dispatch(authAction.addToken(encodedToken));
+      dispatch(
+        authAction.addUserDetails({
+          firstName: foundUser.firstName,
+          email: foundUser.email,
+          lastName: foundUser.lastName,
+        }),
+      );
+      dispatch(videoAction.addToLike(foundUser.likes));
+      dispatch(videoAction.addToHistory(foundUser.history));
+      dispatch(videoAction.addToWatchLater(foundUser.watchlater));
+      dispatch(playlistAction.addPlaylist(foundUser.playlist));
+    } catch ({
+      response: {
+        data: { error },
+        status,
+      },
+    }) {
+      if (status === 404) {
+        dispatch(authAction.addLoginError("Email is not present"));
+      } else if (status === 401) {
+        dispatch(
+          authAction.addSignUpError("Email or  Password is not present"),
+        );
+      }
+      console.log(error, status);
+    }
+  };
+
+  // signup user
+
+  const getUserSignUp = async (email, password, firstName, lastName) => {
+    try {
+      let {
+        data: { encodedToken, createdUser },
+      } = await axios({
+        method: "post",
+        url: "/api/auth/signup",
+        data: {
+          email: email,
+          password: password,
+          firstName: firstName,
+          lastName: lastName,
+        },
+      });
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          token: encodedToken,
+          foundUser: createdUser,
+        }),
+      );
+
+      dispatch(authAction.addToken(encodedToken));
+      dispatch(
+        authAction.addUserDetails({
+          firstName: createdUser.firstName,
+          email: createdUser.email,
+          lastName: createdUser.lastName,
+        }),
+      );
+      dispatch(videoAction.addToLike(createdUser.likes));
+      dispatch(videoAction.addToHistory(createdUser.history));
+      dispatch(videoAction.addToWatchLater(createdUser.watchlater));
+      dispatch(playlistAction.addPlaylist(createdUser.playlist));
+    } catch ({
+      response: {
+        data: { error },
+        status,
+      },
+    }) {
+      if (status === 422) {
+        dispatch(authAction.addSignUpError("Email already exist."));
+      }
+      console.log(error[0]);
+    }
+  };
+
+  // logout user
+
+  const logoutUser = (e, navigate) => {
+    e.preventDefault();
+    localStorage.removeItem("userData");
+    dispatch(authAction.logoutUser());
+    dispatch(videoAction.clearVideoState());
+    dispatch(playlistAction.clearPlayListState());
+
+    navigate("/");
   };
 
   const handlers = {
@@ -221,6 +332,9 @@ export const useHandler = () => {
     addVideoIntoPlaylist,
     removeVideofromPlaylist,
     clearAllHistory,
+    getUserLogin,
+    logoutUser,
+    getUserSignUp,
   };
 
   return [handlers];

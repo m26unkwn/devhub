@@ -2,21 +2,18 @@
 
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useVideos } from "../../context";
 import { videoFilter, firstCapital } from "../../utils";
 import { VideoCard } from "../../components";
 import "./categorySection.css";
+import { useSelector } from "react-redux";
 
 export const Category = () => {
   const { categoryName } = useParams();
-  const {
-    videoState: { videos },
-  } = useVideos();
+  const videos = useSelector((store) => store.videos.videos);
 
   const filteredVideos = videoFilter(videos, categoryName);
 
   const capitalCategoryName = firstCapital(categoryName);
-  console.log("helloIndia", filteredVideos);
 
   return (
     <div className='main-container'>

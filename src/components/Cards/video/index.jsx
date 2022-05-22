@@ -5,15 +5,14 @@ import "./videoCard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as MenuIcon } from "../../../assets/ElipsesIcon.svg";
 import { Modal } from "../../Modal/Modal";
-import { useAuth } from "../../../context";
 import { PlaylistModal } from "../../ActionModal/ActionModal";
+import { useSelector } from "react-redux";
 
 export const VideoCard = ({ props }) => {
   const [modal, setModal] = useState();
   const navigate = useNavigate();
-  const {
-    authState: { token },
-  } = useAuth();
+
+  const token = useSelector((store) => store.auth.token);
 
   const { thumbnail, title, _id } = props;
   const openModal = () => {

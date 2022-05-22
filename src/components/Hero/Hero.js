@@ -1,13 +1,10 @@
 /** @format */
-import { useAuth } from "../../context";
+import { useSelector } from "react-redux";
 import "./hero.css";
 
 export const Hero = (props) => {
-  const {
-    authState: {
-      userDetails: { firstName },
-    },
-  } = useAuth();
+  const { userDetails: { firstName },} = useSelector(store=>store.auth)
+ 
 
   return (
     <section className={`hero-wrapper ${props.className}`}>

@@ -4,8 +4,9 @@ import React from "react";
 import "./explore.css";
 
 import { VideoCard, Button } from "../../components";
-import { useVideos } from "../../context";
 import { useObserver } from "../../hooks";
+import { useDispatch, useSelector } from "react-redux";
+import { videoAction } from "../../store/video-slice";
 
 const buttonTitle = [
   {
@@ -32,14 +33,13 @@ const buttonTitle = [
 
 export const Explore = () => {
   const [loader, filteredVideos] = useObserver();
-  const {
-    videoState: { filters },
-    videoDispatch,
-  } = useVideos();
+
+  const filters = useSelector((store) => store.videos.filters);
+  const dispatch = useDispatch();
 
   const filterDispatch = (e, title) => {
     e.preventDefault();
-    videoDispatch({ type: "ADD_FILTER", filter: title });
+    dispatch(videoAction.addFilters(title));
   };
 
   return (
@@ -59,7 +59,7 @@ export const Explore = () => {
         <div className='explore-card-wrapper'>
           {filteredVideos.length > 0 ? (
             filteredVideos.map((video) => (
-              <VideoCard key={video._id} props={video} />
+              <VideoCard key={video.id} props={video} />
             ))
           ) : (
             <p>Loading</p>

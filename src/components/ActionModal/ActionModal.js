@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import { useVideos } from "../../context";
 import "./playlistModal.css";
 import { useHandler } from "../../hooks";
 import { ReactComponent as CloseIcon } from "../../assets/Close.svg";
@@ -9,11 +8,10 @@ import { isPresent } from "../../utils";
 import { WatchLater } from "./watchLater/WatchLater";
 import { Like } from "./Likes/Like";
 import { Playlist } from "./playlist/Playlist";
+import { useSelector } from "react-redux";
 
 export const PlaylistModal = ({ video, id, closeModal }) => {
-  const {
-    videoState: { watchLater, likes },
-  } = useVideos();
+  const { watchLater, likes } = useSelector((store) => store.videos);
 
   const [handlers] = useHandler();
 

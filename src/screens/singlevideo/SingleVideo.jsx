@@ -5,7 +5,6 @@ import "./singleVideo.css";
 import { useState } from "react";
 import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import { useAxios, useHandler } from "../../hooks";
-import { useAuth, useVideos } from "../../context";
 
 import ReactPlayer from "react-player";
 
@@ -16,17 +15,14 @@ import { ReactComponent as CloseIcon } from "../../assets/Close.svg";
 
 import { isPresent } from "../../utils";
 import { Modal, Playlist } from "../../components";
+import { useSelector } from "react-redux";
 
 export const SingleVideo = () => {
   const { videoId } = useParams();
 
-  const {
-    videoState: { likes, watchLater },
-  } = useVideos();
+  const { likes, watchLater } = useSelector((store) => store.videos);
 
-  const {
-    authState: { token },
-  } = useAuth();
+  const token = useSelector((store) => store.auth.token);
 
   const [singleVideo] = useAxios({
     method: "get",

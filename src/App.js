@@ -3,9 +3,11 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
-import { useToast, useVideos } from "./context";
+import { useToast } from "./context";
 import { useAxios } from "./hooks";
-
+import { authAction } from "./store/auth-slice";
+import { videoAction } from "./store/video-slice";
+import { playlistAction } from "./store/playlist-slice";
 import {
   Navbar,
   Home,
@@ -25,6 +27,7 @@ import {
   CreatorPage,
 } from "./screens";
 import { PrivateRoute, Toast, Loader } from "./components";
+import { useDispatch } from "react-redux";
 
 let videoConfig = {
   method: "get",
@@ -32,8 +35,10 @@ let videoConfig = {
   property: "videos",
 };
 
+let userData = JSON.parse(localStorage.getItem("userData"));
+
 function App() {
-  const { videoDispatch } = useVideos();
+  const dispatch = useDispatch();
 
   const { toast, loading } = useToast();
 
@@ -41,9 +46,30 @@ function App() {
 
   useEffect(() => {
     if (videos) {
-      videoDispatch({ type: "ADD_VIDEOS", videos: videos });
+      dispatch(videoAction.addVideos(videos));
     }
-  }, [videoDispatch, videos]);
+  }, [dispatch, videos]);
+
+  useEffect(
+    () => {
+      if (userData) {
+        dispatch(authAction.addToken(userData.token));
+        dispatch(
+          authAction.addUserDetails({
+            firstName: userData.foundUser.firstName,
+            email: userData.foundUser.email,
+            lastName: userData.foundUser.lastName,
+          }),
+        );
+        dispatch(videoAction.addToLike(userData.foundUser.likes));
+        dispatch(videoAction.addToHistory(userData.foundUser.history));
+        dispatch(videoAction.addToWatchLater(userData.foundUser.watchlater));
+        dispatch(playlistAction.addPlaylist(userData.foundUser.playlist));
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
   return (
     <div className='main-grid-container'>

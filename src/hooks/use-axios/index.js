@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useToast, useVideos } from "../../context";
+import { useToast } from "../../context";
+import { useSelector } from "react-redux";
 
 /** @format */
 export const useAxios = ({
@@ -45,9 +46,7 @@ export const usePlaylistAxios = ({
   const [response, setResponse] = useState();
   const { setLoading } = useToast();
   const [error, setError] = useState("");
-  const {
-    videoState: { playlists },
-  } = useVideos();
+  const playlists = useSelector((store) => store.playlist);
 
   useEffect(() => {
     (async function () {
