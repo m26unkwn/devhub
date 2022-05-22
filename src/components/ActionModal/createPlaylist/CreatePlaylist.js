@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useHandler } from "../../../hooks";
 
-export const CreatePlaylist = ({ closeModal, setModal }) => {
+export const CreatePlaylist = ({ closeModal, setModal, video }) => {
   const [playlist, setPlaylist] = useState({
     title: "",
   });

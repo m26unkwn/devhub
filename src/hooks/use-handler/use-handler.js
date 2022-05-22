@@ -156,19 +156,6 @@ export const useHandler = () => {
   };
 
   //playlistSection
-  const createPlaylist = (playlist) => {
-    token &&
-      serverCalls(
-        "post",
-        "/api/user/playlists",
-        "ADD_PLAYLIST",
-        "playlists",
-        "PLAYLIST CREATED.",
-        {
-          playlist: playlist,
-        },
-      );
-  };
 
   const removePlaylist = (playlistId) => {
     serverCalls(
@@ -190,6 +177,19 @@ export const useHandler = () => {
         "Added to playlist.",
         {
           video: video,
+        },
+      );
+  };
+  const createPlaylist = (playlist) => {
+    token &&
+      serverCalls(
+        "post",
+        "/api/user/playlists",
+        "ADD_PLAYLIST",
+        "playlists",
+        "PLAYLIST CREATED.",
+        {
+          playlist: playlist,
         },
       );
   };

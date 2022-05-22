@@ -19,7 +19,6 @@ export const useObserver = () => {
       if (target.isIntersecting) {
         if (infiniteVideos.length !== videos.length) {
           setTimeout(() => {
-            console.log("hello world");
             setInfiniteVideos((prev) => [
               ...prev,
               ...videos.slice(infiniteVideos.length, infiniteVideos.length + 6),
@@ -30,7 +29,6 @@ export const useObserver = () => {
     },
     [infiniteVideos, videos],
   );
-  console.log(infiniteVideos);
 
   useEffect(() => {
     const { current } = loader;

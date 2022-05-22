@@ -7,7 +7,6 @@ import { CategoryCard } from "../../../components";
 import { useAxios } from "../../../hooks";
 
 export const Category = () => {
-
   const [categories] = useAxios({
     method: "get",
     url: "/api/categories",
@@ -23,8 +22,7 @@ export const Category = () => {
           {categories &&
             categories.categories.map((category) => (
               <CategoryCard
-
-              key={category._id}
+                key={category._id}
                 img={category.image}
                 categoryName={category.categoryName}
               />

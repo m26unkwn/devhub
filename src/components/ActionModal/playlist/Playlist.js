@@ -28,7 +28,7 @@ export const Playlist = ({ video }) => {
           />
         ))}
       {createPlaylist ? (
-        <CreatePlaylist />
+        <CreatePlaylist video={video} />
       ) : (
         <div className='card-action flex jc-center'>
           <button className='btn ' onClick={openCreatePlaylist}>
