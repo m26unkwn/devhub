@@ -1,7 +1,6 @@
 /** @format */
-
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card } from "../../../components";
 import { usePlaylistAxios, useHandler } from "../../../hooks";
 import { useSelector } from "react-redux";
@@ -25,7 +24,7 @@ export const SinglePlaylist = () => {
   return (
     <div className='main-container'>
       <div className='playlist-wrapper'>
-        {singlePlaylist && (
+        {singlePlaylist ? (
           <>
             <div className='playlist-head flex jc-between ai-center'>
               <h1>{singlePlaylist.title}</h1>
@@ -52,6 +51,21 @@ export const SinglePlaylist = () => {
               )}
             </div>
           </>
+        ) : (
+          <div className='flex flex-col jc-center'>
+            <h1 className='no-playlist flex jc-center'>
+              Sorry! we lost your playlist.
+            </h1>
+            <Link
+              to='/'
+              style={{
+                width: "10rem",
+                margin: "auto",
+              }}
+              className=' btn btn-link'>
+              Home
+            </Link>
+          </div>
         )}
       </div>
     </div>
