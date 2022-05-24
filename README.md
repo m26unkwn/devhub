@@ -12,10 +12,10 @@ Devhub is a Video Library App, where users can play binge-watch videos related t
 
 ## Technologies used
 
-- HTML
+- React
+- Redux
+- Javascript
 - CSS
-- JavaScript
-- ReactJS
 - Mockbee (for backend)
 
 ## Features and Functionalities
