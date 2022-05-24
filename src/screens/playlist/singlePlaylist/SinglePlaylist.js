@@ -22,6 +22,8 @@ export const SinglePlaylist = () => {
     headers: headers,
   });
 
+  console.log(singlePlaylist);
+
   return (
     <div className='main-container'>
       <div className='playlist-wrapper'>
@@ -37,7 +39,7 @@ export const SinglePlaylist = () => {
             </div>
             <div className='playlist-card-wrapper'>
               {singlePlaylist.videos.length > 0 ? (
-                singlePlaylist.videos.map((video) => (
+                singlePlaylist.videos?.map((video) => (
                   <Card
                     key={video._id}
                     props={video}

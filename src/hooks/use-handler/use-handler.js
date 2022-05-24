@@ -197,8 +197,12 @@ export const useHandler = () => {
         playlist: playlist,
       },
     );
-    const id = result.playlists.find((playlist) => playlist.id === playListId);
-    addVideoIntoPlaylist(id._id, video);
+    if (video) {
+      const id = result.playlists.find(
+        (playlist) => playlist.id === playListId,
+      );
+      addVideoIntoPlaylist(id._id, video);
+    }
   };
 
   const removeVideofromPlaylist = (playlistid, videoid) => {

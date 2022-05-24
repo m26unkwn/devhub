@@ -23,7 +23,10 @@ export const CreatePlaylist = ({ closeModal, setModal, video }) => {
     setPlaylist({
       title: "",
     });
-    return handlers.createPlaylist(playlist, video);
+    if (video) {
+      return handlers.createPlaylist(playlist, video);
+    }
+    return handlers.createPlaylist(playlist);
   };
 
   return (
