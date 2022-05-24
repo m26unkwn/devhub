@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 export const History = () => {
   const history = useSelector((store) => store.videos.history);
-  console.log(history);
 
   const [handlers] = useHandler();
 

@@ -10,7 +10,6 @@ export const Playlist = ({ video }) => {
   const [createPlaylist, setCreatePlaylist] = useState(false);
 
   const playlists = useSelector((store) => store.playlist);
-  console.log(playlists);
   const openCreatePlaylist = () => {
     setCreatePlaylist(!createPlaylist);
   };
