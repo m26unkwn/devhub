@@ -25,6 +25,7 @@ Devhub is a Video Library App, where users can play binge-watch videos related t
     - Banner that navigates to explore page
     - Video Listing by Categories
     - Trending Videos
+    - infinite Scrolling
 
 ### 2. Explore Videos page :
 
