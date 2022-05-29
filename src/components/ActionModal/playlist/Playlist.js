@@ -2,17 +2,14 @@
 
 import React from "react";
 import { useState } from "react";
-import { useVideos } from "../../../context";
+import { useSelector } from "react-redux";
 import { CreatePlaylist } from "../createPlaylist/CreatePlaylist";
 import { PlaylistCheckbox } from "./PlaylistCheckbox";
 
 export const Playlist = ({ video }) => {
   const [createPlaylist, setCreatePlaylist] = useState(false);
 
-  const {
-    videoState: { playlists },
-  } = useVideos();
-
+  const playlists = useSelector((store) => store.playlist);
   const openCreatePlaylist = () => {
     setCreatePlaylist(!createPlaylist);
   };

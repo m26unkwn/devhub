@@ -1,12 +1,10 @@
 /** @format */
-import { useVideos } from "../../context";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { videoFilter } from "../../utils";
+import { useSelector } from "react-redux";
 
 export const useObserver = () => {
-  const {
-    videoState: { videos, filters },
-  } = useVideos();
+  const { videos, filters } = useSelector((store) => store.videos);
 
   const loader = useRef(null);
   const [infiniteVideos, setInfiniteVideos] = useState(videos.slice(0, 6));

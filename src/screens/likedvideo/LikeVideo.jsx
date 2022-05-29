@@ -1,22 +1,20 @@
 /** @format */
 
 import React from "react";
+import { useSelector } from "react-redux";
 import { Card, Hero } from "../../components";
-import { useVideos } from "../../context";
 import { useHandler } from "../../hooks";
 import "./likevideo.css";
 
 export const LikeVideo = () => {
-  const {
-    videoState: { likes },
-  } = useVideos();
+  const likes = useSelector((store) => store.videos.likes);
 
   const [{ removeFromLike }] = useHandler();
 
   return (
     <div className='main-container'>
       <div className='like-wrapper'>
-        {likes.length > 0 ? (
+        {likes?.length > 0 ? (
           <>
             <Hero className='background-color' title='Your Liked Videos' />
             <div className='video-card-wrapper flex flex-col flex-gap'>

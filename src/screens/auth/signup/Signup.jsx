@@ -2,19 +2,21 @@
 
 import React, { useReducer } from "react";
 import { Navigate, Link } from "react-router-dom";
-import { useAuth } from "../../../context";
 
 import "../auth.css";
 
 import { signupInitialData, signUpReducer, signupValidation } from "../utils";
 
 import { Input } from "../../../components";
+import { useSelector } from "react-redux";
+import { useHandler } from "../../../hooks";
 
 export const Signup = () => {
   const [signupState, dispatch] = useReducer(signUpReducer, signupInitialData);
-  const {
-    authState: { token, authError },
-  } = useAuth();
+
+  const { token, authError } = useSelector((store) => store.auth);
+
+  const [{ getUserSignUp }] = useHandler();
 
   const onChangeHandler = (e, type) => {
     dispatch({ type, payload: e.target.value });
@@ -23,7 +25,12 @@ export const Signup = () => {
   const signupUser = (e) => {
     e.preventDefault();
     if (signupValidation(signupState, dispatch)) {
-      alert("Form is Valid");
+      getUserSignUp(
+        signupState.email,
+        signupState.password,
+        signupState.firstName,
+        signupState.lastName,
+      );
     }
   };
 

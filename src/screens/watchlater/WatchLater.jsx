@@ -1,22 +1,20 @@
 /** @format */
 
 import React from "react";
+import { useSelector } from "react-redux";
 import { Card, Hero } from "../../components";
-import { useVideos } from "../../context";
 import { useHandler } from "../../hooks";
 import "./watchlater.css";
 
 export const WatchLater = () => {
-  const {
-    videoState: { watchLater },
-  } = useVideos();
+  const watchLater = useSelector((store) => store.videos.watchLater);
 
   const [handlers] = useHandler();
 
   return (
     <div className='main-container'>
       <div className='watchlater-wrapper'>
-        {watchLater.length > 0 ? (
+        {watchLater?.length > 0 ? (
           <>
             <Hero
               className='background-color'

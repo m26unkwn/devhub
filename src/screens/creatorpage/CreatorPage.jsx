@@ -2,16 +2,14 @@
 
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useVideos } from "../../context";
 import { Card } from "../../components";
 
 import "./creatorpage.css";
+import { useSelector } from "react-redux";
 
 export const CreatorPage = () => {
   const { creatorId } = useParams();
-  const {
-    videoState: { videos },
-  } = useVideos();
+  const videos = useSelector((store) => store.videos.videos);
   const channelVideos = videos.filter(
     (video) => video.creator.toLowerCase() === creatorId.toLocaleLowerCase(),
   );

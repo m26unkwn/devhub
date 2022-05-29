@@ -2,15 +2,13 @@
 
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../../../context";
 import "./header.css";
 import { Logo, Profile } from "../../../assets";
 import SearchBar from "../../../components/SearchBar/Searchbar";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
-  const {
-    authState: { token },
-  } = useAuth();
+  const { token } = useSelector((store) => store.auth);
   return (
     <div className={`header-wrapper flex jc-between ai-center`}>
       <div className='head-logo flex ai-center jc-start'>

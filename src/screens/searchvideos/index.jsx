@@ -1,14 +1,12 @@
 /** @format */
 
 import { useLocation, Link } from "react-router-dom";
-import { useVideos } from "../../context";
 import { VideoCard } from "../../components/Cards/video";
 import { queryFilter } from "../../utils";
+import { useSelector } from "react-redux";
 
 export const SearchVideos = () => {
-  const {
-    videoState: { videos },
-  } = useVideos();
+  const videos = useSelector((store) => store.videos.videos);
   const { search } = useLocation();
 
   const searchParam = new URLSearchParams(search);

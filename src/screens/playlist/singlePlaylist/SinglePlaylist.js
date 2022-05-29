@@ -1,16 +1,14 @@
 /** @format */
-
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useAuth } from "../../../context";
+import { useParams, Link } from "react-router-dom";
 import { Card } from "../../../components";
 import { usePlaylistAxios, useHandler } from "../../../hooks";
+import { useSelector } from "react-redux";
 
 export const SinglePlaylist = () => {
   const { playlistId } = useParams();
-  const {
-    authState: { token },
-  } = useAuth();
+
+  const token = useSelector((store) => store.auth.token);
 
   const [handlers] = useHandler();
 
@@ -26,7 +24,7 @@ export const SinglePlaylist = () => {
   return (
     <div className='main-container'>
       <div className='playlist-wrapper'>
-        {singlePlaylist && (
+        {singlePlaylist ? (
           <>
             <div className='playlist-head flex jc-between ai-center'>
               <h1>{singlePlaylist.title}</h1>
@@ -37,7 +35,7 @@ export const SinglePlaylist = () => {
               </button>
             </div>
             <div className='playlist-card-wrapper'>
-              {singlePlaylist.videos.length > 0 ? (
+              {singlePlaylist.videos?.length > 0 ? (
                 singlePlaylist.videos.map((video) => (
                   <Card
                     key={video._id}
@@ -53,6 +51,21 @@ export const SinglePlaylist = () => {
               )}
             </div>
           </>
+        ) : (
+          <div className='flex flex-col jc-center'>
+            <h1 className='no-playlist flex jc-center'>
+              Sorry! we lost your playlist.
+            </h1>
+            <Link
+              to='/'
+              style={{
+                width: "10rem",
+                margin: "auto",
+              }}
+              className=' btn btn-link'>
+              Home
+            </Link>
+          </div>
         )}
       </div>
     </div>

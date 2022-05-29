@@ -8,14 +8,14 @@ Devhub is a Video Library App, where users can play binge-watch videos related t
 
 ## Live App link
 
-- [Magnificent Play](https://devvhub.netlify.app/)
+- [Devhub](https://devvhub.netlify.app/)
 
 ## Technologies used
 
-- HTML
+- React
+- Redux
+- Javascript
 - CSS
-- JavaScript
-- ReactJS
 - Mockbee (for backend)
 
 ## Features and Functionalities

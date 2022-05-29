@@ -2,16 +2,18 @@
 
 import React, { useState } from "react";
 import { useHandler } from "../../../hooks";
+import { v4 as uuid } from "uuid";
 
 export const CreatePlaylist = ({ closeModal, setModal, video }) => {
   const [playlist, setPlaylist] = useState({
     title: "",
+    id: "",
   });
 
   const [handlers] = useHandler();
 
   const onCreatePlaylist = (e) => {
-    setPlaylist({ title: e.target.value });
+    setPlaylist({ title: e.target.value, id: uuid() });
   };
 
   const createThePlaylist = () => {
@@ -21,7 +23,8 @@ export const CreatePlaylist = ({ closeModal, setModal, video }) => {
     setPlaylist({
       title: "",
     });
-    return handlers.createPlaylist(playlist);
+
+    return handlers.createPlaylist(playlist, video);
   };
 
   return (
